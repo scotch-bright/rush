@@ -1,0 +1,8 @@
+{
+	"two": 2,
+	"array_of_thee": [1, 2, 3],
+	"another_object": {
+		"sub_object_property": "this",
+		"sub_object_property_2": [4, 3, 2, 1]
+	}
+}
