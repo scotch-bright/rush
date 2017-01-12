@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 30px;
+    }
+  
+    .error_header {
+      color:white;
+      background-color: red;
+      font-size: 20px;
+    }
+    
+    .std_padding {
+      padding: 10px;
+    }
+    
+    .error_desscription {
+      background-color: #ddd5c9;
+      line-height: 1.8em;
+    }
+
+    table {
+      width: 100%;
+      border-bottom: 2px solid #77613f;
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+    
+    th {
+      background-color: #77613f;
+      color: white;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: normal;
+      border: 1px solid black;
+    }
+    
+    tr {
+      text-align: center;
+    }  
+    
+    td {
+      padding: 10px;
+      border: 1px solid black;
+    }  
+    
+    tr:nth-child(even) {
+      background: #ddd5c9
+    }
+    
+    tr:nth-child(odd) {
+      background: white;
+    }
+  </style>
+</head>
+<body>
+  <div class='error_header std_padding'>Rush Error :: <%= @error_title %></div>
+  <div class='error_desscription std_padding'>
+    <%= @error_description %>
+  </div>
+  <%= @error_additional_details %>
+</body>
+</html>

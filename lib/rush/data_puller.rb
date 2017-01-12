@@ -34,7 +34,7 @@ module Rush
           @data[file_name_without_extension] = JSON.parse(file_json, object_class: OpenStruct)
         rescue JSON::ParserError => e
           @well_formed = false
-          @errors << { data_file_path => remove_error_code_from_JSON_error(e.message) }
+          @errors << { file: data_file_path, error_message: remove_error_code_from_JSON_error(e.message) }
         end
       end
     end

@@ -50,7 +50,7 @@ describe Rush::DataPuller do
 
     context "when json files are malfolmed" do
       it "returns an array of hashes with file names as the key and error from the JSON parser as the value" do
-        expect mal_formed_json_dp.errors.should =~  [ { File.join(mal_formed_json_path, "bad_json.json")  => "unexpected token at '}'" }, { File.join(mal_formed_json_path, "bad_json_2.json") => "unexpected token at '}{}'" } ]
+        expect mal_formed_json_dp.errors.should =~ [ { file: File.join(mal_formed_json_path, "bad_json.json"), error_message: "unexpected token at '}'" }, { file: File.join(mal_formed_json_path, "bad_json_2.json"), error_message: "unexpected token at '}{}'" } ]
       end
     end
 
@@ -61,7 +61,6 @@ describe Rush::DataPuller do
     end
 
   end
-
 
   describe "#data" do
 
