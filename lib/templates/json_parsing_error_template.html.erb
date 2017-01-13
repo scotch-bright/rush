@@ -1,0 +1,16 @@
+<table>
+	<thead>
+		<tr>
+			<th>Name Of File</th>
+			<th>JSON Parse Error</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @errors_array.each do |error| %>
+		<tr>
+			<td><%= error[:file] %></td>
+			<td><%= error[:error_message] %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

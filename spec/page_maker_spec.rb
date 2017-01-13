@@ -62,6 +62,14 @@ describe Rush::PageMaker do
 
     end
 
+    # context "there is no html file with the same name as the page in the headers folder" do
+
+    #   context "there is a call to 'render_header' at some point in the page" do
+
+    #   end
+
+    # end
+
     context "the view was not found in the view folder" do
 
       context "the 404 view was not found in the errors folder" do

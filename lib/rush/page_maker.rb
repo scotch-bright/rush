@@ -16,4 +16,21 @@ module Rush
 
   end
 
+  class ResourceNotFoundError < StandardError
+    attr_reader :long_error_description
+    def initialize(msg, long_error_description)
+      @long_error_description = long_error_description
+      super(msg)
+    end
+  end
+
+  class DataFolderParseError < StandardError
+    attr_reader :long_error_description, :errors_array
+    def initialize(msg, errors_array, long_error_description)
+      @errors_array = errors_array
+      @long_error_description = long_error_description
+      super(msg)
+    end
+  end
+
 end
