@@ -8,7 +8,7 @@ describe Rush::ErrorServer do
     context "resource missing" do
 
       it "returns HTML error indicating the same" do
-        es = Rush::ErrorServer.new(Rush::ResourceNotFoundError.new("application.html missing in layouts folder", "user/path/application.html"))
+        es = Rush::ErrorServer.new(Rush::PageMakerError.new("application.html missing in layouts folder", "user/path/application.html"))
         expect(es.get_error_html).to include("Rush Error", "application.html missing in layouts folder", "user/path/application.html")
         es.get_error_html.should_not include("<table>")
       end

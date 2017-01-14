@@ -16,7 +16,7 @@ module Rush
 
   end
 
-  class ResourceNotFoundError < StandardError
+  class PageMakerError < StandardError
     attr_reader :long_error_description
     def initialize(msg, long_error_description)
       @long_error_description = long_error_description
