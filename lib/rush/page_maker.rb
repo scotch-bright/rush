@@ -15,13 +15,17 @@ module Rush
 
     def get_page(path)
       begin
+        
         @is_render_page_called = false
         parse_data_folder
         layout_template = get_layout_file(path)
+        result = ERB.new(layout_template).result(binding)
 
         unless @is_render_page_called
           raise Rush::DataFolderParseError.new(Rush::ERROR_TITLE_NO_CALL_TO_RENDER_PAGE, Rush::ERROR_DESC_NO_CALL_TO_RENDER_PAGE)
         end
+
+        return result
 
       rescue Exception => e
         es = Rush::ErrorServer.new e
@@ -30,6 +34,26 @@ module Rush
     end
 
     private
+
+    def render_partial(file_name)
+      partial_file_path = File.join @partials_folder, "#{file_name}.html"
+      if Rush::FileFetcher.file_exists?(partial_file_path)
+        partial_template = Rush::FileFetcher.get_file_contents(partial_file_path)
+        ERB.new(partial_template).result(binding)
+      else
+        raise Rush::PageMakerError.new(Rush::ERROR_TITLE_PARTIAL_NOT_FOUND + " #{partial_file_path}", Rush::ERROR_DESC_PARTIAL_NOT_FOUND)
+      end
+    end
+
+    def render_header(path)
+      @header_page = File.join @headers_folder, "#{path}.html"
+      if Rush::FileFetcher.file_exists?(@header_page)
+        header_template = Rush::FileFetcher.get_file_contents(@header_page)
+        ERB.new(header_template).result(binding)
+      else
+        ""
+      end
+    end
 
     def render_page
       @is_render_page_called = true
