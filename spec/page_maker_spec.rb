@@ -35,7 +35,7 @@ describe Rush::PageMaker do
         ## Folder Made
         folder_name = "data_puller_error"
         result_hash = get_page_maker_from_folder_path(folder_name)
-        expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_MALFORMED_JSON, Rush::ERROR_DESC_MALFORMED_JSON)
+        expect(result_hash[:got]).to include("Rush Error", Rush::ERROR_TITLE_MALFORMED_JSON, Rush::ERROR_DESC_MALFORMED_JSON)
       end
 
     end
@@ -46,7 +46,7 @@ describe Rush::PageMaker do
         # Folder Made
         folder_name = "data_puller_good"
         result_hash = get_page_maker_from_folder_path(folder_name)
-        result_hash[:expected].should == result_hash[:got]
+        result_hash[:got].should == result_hash[:expected]
       end
 
     end
@@ -59,7 +59,7 @@ describe Rush::PageMaker do
           # Folder Made
           folder_name = "render_header"
           result_hash = get_page_maker_from_folder_path(folder_name)
-          result_hash[:expected].should == result_hash[:got]
+          result_hash[:got].should == result_hash[:expected]
         end
 
       end
@@ -74,7 +74,7 @@ describe Rush::PageMaker do
           # Folder Made
           folder_name = "render_header_no_header"
           result_hash = get_page_maker_from_folder_path(folder_name)
-          result_hash[:expected].should == result_hash[:got]
+          result_hash[:got].should == result_hash[:expected]
         end
 
       end
@@ -88,7 +88,7 @@ describe Rush::PageMaker do
           # Folder Made
           folder_name = "no_page"
           result_hash = get_page_maker_from_folder_path(folder_name)
-          expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_PAGE_NOT_FOUND, Rush::ERROR_DESC_PAGE_NOT_FOUND)
+          expect(result_hash[:got]).to include("Rush Error", Rush::ERROR_TITLE_PAGE_NOT_FOUND, Rush::ERROR_DESC_PAGE_NOT_FOUND)
         end
 
     end
@@ -103,7 +103,7 @@ describe Rush::PageMaker do
             # Folder Made
             folder_name = "view_calls_for_partial"
             result_hash = get_page_maker_from_folder_path(folder_name)
-            result_hash[:expected].should == result_hash[:got]
+            result_hash[:got].should == result_hash[:expected]
           end
 
         end
@@ -115,7 +115,7 @@ describe Rush::PageMaker do
             # Folder Made
             folder_name = "view_calls_for_partial_missing"
             result_hash = get_page_maker_from_folder_path(folder_name)
-            expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_PARTIAL_NOT_FOUND, Rush::ERROR_DESC_PARTIAL_NOT_FOUND)
+            expect(result_hash[:got]).to include("Rush Error", Rush::ERROR_TITLE_PARTIAL_NOT_FOUND, Rush::ERROR_DESC_PARTIAL_NOT_FOUND)
           end
 
         end
@@ -130,7 +130,7 @@ describe Rush::PageMaker do
             # Folder Made
             folder_name = "specific_layout"
             result_hash = get_page_maker_from_folder_path(folder_name)
-            result_hash[:expected].should == result_hash[:got]
+            result_hash[:got].should == result_hash[:expected]
           end
 
         end
@@ -142,7 +142,7 @@ describe Rush::PageMaker do
             # Folder Made
             folder_name = "specific_layout_not_found"
             result_hash = get_page_maker_from_folder_path(folder_name)
-            expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_LAYOUT_NOT_FOUND, Rush::ERROR_DESC_LAYOUT_NOT_FOUND)
+            expect(result_hash[:got]).to include("Rush Error", Rush::ERROR_TITLE_LAYOUT_NOT_FOUND, Rush::ERROR_DESC_LAYOUT_NOT_FOUND)
           end
 
         end
@@ -158,7 +158,7 @@ describe Rush::PageMaker do
             # Folder Made
             folder_name = "standard_layout_not_found"
             result_hash = get_page_maker_from_folder_path(folder_name)
-            expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_STANDARD_LAYOUT_NOT_FOUND, Rush::ERROR_DESC_STANDARD_LAYOUT_NOT_FOUND)
+            expect(result_hash[:got]).to include("Rush Error", Rush::ERROR_TITLE_STANDARD_LAYOUT_NOT_FOUND, Rush::ERROR_DESC_STANDARD_LAYOUT_NOT_FOUND)
           end
 
         end
@@ -172,8 +172,7 @@ describe Rush::PageMaker do
               # Folder Made
               folder_name = "standard_layout_no_render_view"
               result_hash = get_page_maker_from_folder_path(folder_name)
-              result_hash[:expected].should == result_hash[:got]
-              expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_NO_CALL_TO_RENDER_PAGE, Rush::ERROR_DESC_NO_CALL_TO_RENDER_PAGE)
+              expect(result_hash[:got]).to include("Rush Error", Rush::ERROR_TITLE_NO_CALL_TO_RENDER_PAGE, Rush::ERROR_DESC_NO_CALL_TO_RENDER_PAGE)
             end
 
           end
@@ -184,7 +183,7 @@ describe Rush::PageMaker do
               # Folder Made
               folder_name = "standard_layout_found"
               result_hash = get_page_maker_from_folder_path(folder_name)
-              result_hash[:expected].should == result_hash[:got]
+              result_hash[:got].should == result_hash[:expected]
             end
 
           end
