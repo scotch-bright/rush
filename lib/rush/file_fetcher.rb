@@ -34,6 +34,11 @@ module Rush
       File.basename(file_path)
     end
 
+    # Returns the first line of the file in string form
+    def self.first_line_of_file(file_path)
+      File.open(file_path) {|f| f.readline}
+    end
+
   end
 
 end

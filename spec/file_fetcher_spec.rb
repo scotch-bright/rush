@@ -23,6 +23,15 @@ describe Rush::FileFetcher do
 
   end
 
+  describe ".first_line_of_file" do
+
+    it "returns a string containing the first line of the file" do
+      file_path = File.join( test_fixtures_folder_path, "lots_of_files", "1a.html")
+      expect Rush::FileFetcher.first_line_of_file(file_path).should eq "<b>One more file!</b>\n"
+    end
+
+  end
+
   describe ".get_file_contents" do
 
     it "gets the contents of the file" do
