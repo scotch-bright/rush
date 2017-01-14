@@ -32,6 +32,7 @@ describe Rush::PageMaker do
 
       it "shows the data puller errors in a frindly way" do
         ## Error Case
+        ## Folder Made
         folder_name = "data_puller_error"
         result_hash = get_page_maker_from_folder_path(folder_name)
         expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_MALFORMED_JSON, Rush::ERROR_DESC_MALFORMED_JSON)
@@ -42,6 +43,7 @@ describe Rush::PageMaker do
     context "the data puller initialization does not raise an error" do
 
       it "allows views and partials to acess the data from data puller properly" do
+        # Folder Made
         folder_name = "data_puller_good"
         result_hash = get_page_maker_from_folder_path(folder_name)
         result_hash[:expected].should == result_hash[:got]
@@ -54,7 +56,8 @@ describe Rush::PageMaker do
       context "there is a call to 'render_header' at some point in the page" do
 
         it "renders the header in the correct place" do
-          folder_name = "test_render_header"
+          # Folder Made
+          folder_name = "render_header"
           result_hash = get_page_maker_from_folder_path(folder_name)
           result_hash[:expected].should == result_hash[:got]
         end
@@ -68,7 +71,8 @@ describe Rush::PageMaker do
       context "there is a call to 'render_header' at some point in the page" do
 
         it "it returns a blank string as the header in response to 'render_header'" do
-          folder_name = "test_render_header_no_header"
+          # Folder Made
+          folder_name = "render_header_no_header"
           result_hash = get_page_maker_from_folder_path(folder_name)
           result_hash[:expected].should == result_hash[:got]
         end
@@ -81,7 +85,8 @@ describe Rush::PageMaker do
 
         it "returns a friendly error indicating that no page was found" do
           ## Error Case
-          folder_name = "no_view_no_errors_folder"
+          # Folder Made
+          folder_name = "no_page"
           result_hash = get_page_maker_from_folder_path(folder_name)
           expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_PAGE_NOT_FOUND, Rush::ERROR_DESC_PAGE_NOT_FOUND)
         end
@@ -95,6 +100,7 @@ describe Rush::PageMaker do
         context "the partial was found in the partials folder" do
 
           it "renders the partial at the appropriate spot" do
+            # Folder Made
             folder_name = "view_calls_for_partial"
             result_hash = get_page_maker_from_folder_path(folder_name)
             result_hash[:expected].should == result_hash[:got]
@@ -106,7 +112,8 @@ describe Rush::PageMaker do
 
           it "raises a friendly error message letting the user know how to solve the issue" do
             ## Error Case
-            folder_name = "view_calls_for_partial_missing_partial"
+            # Folder Made
+            folder_name = "view_calls_for_partial_missing"
             result_hash = get_page_maker_from_folder_path(folder_name)
             expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_PARTIAL_NOT_FOUND, Rush::ERROR_DESC_PARTIAL_NOT_FOUND)
           end
@@ -120,6 +127,7 @@ describe Rush::PageMaker do
         context "the layout file name as specified in the comment was found in the layouts folder" do
 
           it "uses the layout other than the default layout of 'application.html' as specified in the comment" do
+            # Folder Made
             folder_name = "specific_layout"
             result_hash = get_page_maker_from_folder_path(folder_name)
             result_hash[:expected].should == result_hash[:got]
@@ -131,6 +139,7 @@ describe Rush::PageMaker do
 
           it "raises a friendly error letting the user know that there is no file like '<layout_file_name>.html in the layouts folder'" do
             ## Error Case
+            # Folder Made
             folder_name = "specific_layout_not_found"
             result_hash = get_page_maker_from_folder_path(folder_name)
             expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_LAYOUT_NOT_FOUND, Rush::ERROR_DESC_LAYOUT_NOT_FOUND)
@@ -146,6 +155,7 @@ describe Rush::PageMaker do
 
           it 'raises a friendly error to the user letting him know that there needs to be a file called application.html in the layouts folder' do
             ## Error Case
+            # Folder Made
             folder_name = "standard_layout_not_found"
             result_hash = get_page_maker_from_folder_path(folder_name)
             expect(result_hash[:expected]).to include("Rush Error", Rush::ERROR_TITLE_STANDARD_LAYOUT_NOT_FOUND, Rush::ERROR_DESC_STANDARD_LAYOUT_NOT_FOUND)
@@ -159,6 +169,7 @@ describe Rush::PageMaker do
 
             it "raises a friendly error reminding the developer that he/she should make a call to 'render_page' or the view will not show up" do
               ## Error Case
+              # Folder Made
               folder_name = "standard_layout_no_render_view"
               result_hash = get_page_maker_from_folder_path(folder_name)
               result_hash[:expected].should == result_hash[:got]
@@ -170,6 +181,7 @@ describe Rush::PageMaker do
           context "the layout makes a call to the 'render_page' method via ERB" do
 
             it "renders the layout with the application.html as the layout" do
+              # Folder Made
               folder_name = "standard_layout_found"
               result_hash = get_page_maker_from_folder_path(folder_name)
               result_hash[:expected].should == result_hash[:got]
