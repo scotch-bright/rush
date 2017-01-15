@@ -15,14 +15,14 @@ module Rush
 
     def get_page(path)
       begin
-        
+        @path = path
         @is_render_page_called = false
         parse_data_folder
-        layout_template = get_layout_file(path)
+        layout_template = get_layout_file
         result = ERB.new(layout_template).result(binding)
 
         unless @is_render_page_called
-          raise Rush::DataFolderParseError.new(Rush::ERROR_TITLE_NO_CALL_TO_RENDER_PAGE, Rush::ERROR_DESC_NO_CALL_TO_RENDER_PAGE)
+          raise Rush::PageMakerError.new(Rush::ERROR_TITLE_NO_CALL_TO_RENDER_PAGE, Rush::ERROR_DESC_NO_CALL_TO_RENDER_PAGE)
         end
 
         return result
@@ -45,8 +45,8 @@ module Rush
       end
     end
 
-    def render_header(path)
-      @header_page = File.join @headers_folder, "#{path}.html"
+    def render_header
+      @header_page = File.join @headers_folder, "#{@path}.html"
       if Rush::FileFetcher.file_exists?(@header_page)
         header_template = Rush::FileFetcher.get_file_contents(@header_page)
         ERB.new(header_template).result(binding)
@@ -74,8 +74,8 @@ module Rush
       puts "\n\n\n" + "=" * 10 + title + "=" * 10 + "\n" + msg + "=" * 20 + "\n\n\n"
     end
 
-    def get_layout_file(path)
-      @page_html_path = File.join @pages_folder, "#{path}.html"
+    def get_layout_file
+      @page_html_path = File.join @pages_folder, "#{@path}.html"
       if Rush::FileFetcher.file_exists?(@page_html_path)
         if special_layout?
           get_special_layout

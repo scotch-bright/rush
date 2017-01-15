@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>Rush Error</title>
   <style>
     body {
       font-family: Arial;
-      margin: 30px;
+      margin: 10px;
     }
   
     .error_header {
       color:white;
       background-color: red;
       font-size: 20px;
+      padding: 10px 30px;
     }
     
     .std_padding {
-      padding: 10px;
+      padding: 30px;
     }
     
     .error_desscription {
       background-color: #ddd5c9;
       line-height: 1.8em;
+    }
+
+    .error_desc_title {
+       font-size: 1.2em;
+       font-weight: bold;
+       color: #592B33;
+    }
+
+    .verticle_spacer {
+       padding-top: 30px;
+    }
+
+    ul {
+       font-size: 0.8em;
+
     }
 
     table {
@@ -58,9 +74,19 @@
   </style>
 </head>
 <body>
-  <div class='error_header std_padding'>Rush Error :: <%= @error_title %></div>
+  <div class='error_header'>Rush Error :: <%= @error_title %></div>
   <div class='error_desscription std_padding'>
+    <div class="error_desc_title">What Went Wrong?</div>
     <%= @error_description %>
+    <% unless @error.backtrace.nil? %>
+      <div class="verticle_spacer"></div>
+      <div class="error_desc_title">Back Trace</div>
+      <ul class="backtrace">
+      <% @error.backtrace.each do |item| %>
+        <li><%= item %></li>
+      <% end %>
+      </ul>
+    <% end %>
   </div>
   <%= @error_additional_details %>
 </body>

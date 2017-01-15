@@ -11,9 +11,12 @@ module Rush
   ERROR_TITLE_LAYOUT_NOT_FOUND = "Layout File Asked For In The Page Not Found :: "
   ERROR_DESC_LAYOUT_NOT_FOUND = "It seems that the page is asking for a custom layout file via the first line comment. Rush is trying to find the layout file in the layouts folder but the file seems to be missing. Please check to see if the layout file is present in the layouts folder. If the first line with the comment is removed, Rush will try to use the default layout file 'application.html' which is hopefully in the layouts folder."
 
-  ERROR_TITLE_STANDARD_LAYOUT_NOT_FOUND = "Layout File 'application.html' Not Found In The Layouts Folder"
+  ERROR_TITLE_STANDARD_LAYOUT_NOT_FOUND = "Layout File 'application.html' Not Found :: "
   ERROR_DESC_STANDARD_LAYOUT_NOT_FOUND = "It seems that the layout file 'application.html' which should be present in the layouts folder is missing. Because of this Rush is not sure what layout needs to be shown around the page. Please create a file called 'application.html' in the layouts folder. Also, make sure the file includes a call to 'render_page'. If not, Rush will not know where to put in your page's content."
 
   ERROR_TITLE_NO_CALL_TO_RENDER_PAGE = "'render_page' Not Called In Layout"
   ERROR_DESC_NO_CALL_TO_RENDER_PAGE = "It seems that layout file does not call 'render_page' anywhere in its content. This is confusing for Rush. Rush will not know where the contents of the page need to be placed. Please make a call to 'render_page' somewhere in the layout."
+
+  ERROR_TITLE_GENERAL_RUBY_ERROR = "Something Went Wrong When Parsing Ruby"
+
 end

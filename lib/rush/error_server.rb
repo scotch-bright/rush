@@ -28,7 +28,7 @@ module Rush
         @errors_array = @error.errors_array
         @error_additional_details = get_data_parsing_error_table
       else
-        @error_title = "Something Went Wrong When Passing Ruby"
+        @error_title = Rush::ERROR_TITLE_GENERAL_RUBY_ERROR
         @error_description = @error.message
         @error_additional_details = ""
       end
