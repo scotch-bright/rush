@@ -23,4 +23,7 @@ module Rush
   ERROR_TITLE_YAML_CONFIG_PARSE_ERROR = "Config File 'rush_config.yml' Could Not Be Parsed"
   ERROR_DESC_YAML_CONFIG_PARSE_ERROR = "It seems that the config file was not in a proper format. Even though the config file may seem to be plain english, it needs to be formatted in a specific way. The config file needs to be in valid YAML format. To learn more about YAML and how to write correct YAML, you can <a href='https://learn.getgrav.org/advanced/yaml'>go here.</a>"  
 
+  CSS_SERVER_404_MESSAGE = "The CSS file asked for was not found (or it may be blank)."
+  JS_SERVER_404_MESSAGE = "The JS file asked for was not found (or it may be blank)."
+
 end

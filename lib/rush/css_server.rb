@@ -11,6 +11,23 @@ module Rush
       @minify = config.minify_css == true ? true : false
     end
 
+    # Method that is required to turn the class into a Rack app
+    def call(env)
+      request = Rack::Request.new(env)
+      path = request.path
+
+      # Removing the starting forward slash that comes with the path
+      path = path.gsub("/css/", "")
+
+      css_string = get_css_file(path)
+
+      if css_string == ""
+        ['404', {'Content-Type' => 'text/html'}, [Rush::CSS_SERVER_404_MESSAGE]]
+      else
+        ['200', {'Content-Type' => 'text/css'}, [css_string]]
+      end 
+    end
+
     # Gets the CSS file asked for. If an SCSS file is asked for, the SCSS will be converted to CSS and then served. This is done so that the developer can simply add a style sheet reference to a .scss file and will still get back a CSS file effortlessly. Additionally, if "application.css" is asked for then all the files in the CSS folder are combined in alphabetical order. If there are SCSS files they are tuned into CSS files.
     def get_css_file(css_file_name)
 
@@ -44,6 +61,9 @@ module Rush
     end
 
     private
+    def log(title, msg)
+      puts "\n\n\n" + "=" * 10 + title + "=" * 10 + "\n" + msg + "=" * 20 + "\n\n\n"
+    end
 
     def get_css_file_contents(css_file_name)
       css_file_path = File.join(@css_folder_path, css_file_name)

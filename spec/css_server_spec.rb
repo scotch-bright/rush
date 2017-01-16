@@ -1,23 +1,49 @@
 require "spec_helper"
 require "rush"
+require "rack"
 
 describe Rush::CSSServer do
 
+  let (:css_test_folder) { File.expand_path( "../test_fixtures/css_server_test", __FILE__ ) }
+  let (:css_server) {
+    Rush::CSSServer.new(OpenStruct.new(css_folder: css_test_folder))
+  }
+
+  let (:css_server_for_application_css_test) {
+    Rush::CSSServer.new(OpenStruct.new(css_folder: File.join( css_test_folder, "aplication_css_test")))
+  }
+
+  let (:css_server_with_minification) {
+    Rush::CSSServer.new(OpenStruct.new(css_folder: css_test_folder, minify_css: true))
+  }
+
+  describe "#call" do
+
+    context "#get_css_file is returning a blank string" do
+
+      it "returns a response with the code 404 and a message that says that the file was not found or blank" do
+        mock_request = Rack::MockRequest.new css_server
+        mock_request.get("/css/not_there.css").body.should == Rush::CSS_SERVER_404_MESSAGE
+        mock_request.get("/css/not_there.css").not_found?.should be true
+      end
+
+    end
+
+    context "#get_css_file is not returning a blank string" do
+
+      it "returns a 200 response with the propery css content" do
+        the_css_that_should_be_returned = Rush::FileFetcher.get_file_contents(File.join(css_test_folder, "test.css"))
+        mock_request = Rack::MockRequest.new css_server
+        mock_request.get("/css/test.css").body.should == the_css_that_should_be_returned
+        mock_request.get("/css/test.css").ok?.should be true
+      end
+
+    end
+
+  end
+
   describe "#get_css_file" do
-
-    let (:css_test_folder) { File.expand_path( "../test_fixtures/css_server_test", __FILE__ ) }
-    let (:css_server) {
-      Rush::CSSServer.new(OpenStruct.new(css_folder: css_test_folder))
-    }
-
-    let (:css_server_for_application_css_test) {
-      Rush::CSSServer.new(OpenStruct.new(css_folder: File.join( css_test_folder, "aplication_css_test")))
-    }
-
-    let (:css_server_with_minification) {
-      Rush::CSSServer.new(OpenStruct.new(css_folder: css_test_folder, minify_css: true))
-    }
-
+ 
     context "minify flag is set to true" do
 
       it "minifies the css files before returning the final output" do

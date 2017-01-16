@@ -3,21 +3,47 @@ require "rush"
 
 describe Rush::JSServer do
 
+  let (:js_test_folder) { File.expand_path( "../test_fixtures/js_server_test", __FILE__ ) }
+
+  let (:js_server) {
+    Rush::JSServer.new(OpenStruct.new(js_folder: js_test_folder))
+  }
+
+  let (:js_server_for_application_js_test) {
+    Rush::JSServer.new(OpenStruct.new(js_folder: File.join( js_test_folder, "application_js_test")))
+  }
+
+  let (:js_server_with_minification) {
+    Rush::JSServer.new(OpenStruct.new(js_folder: js_test_folder, minify_js: true))
+  }
+
+  describe "#call" do
+
+    context "#get_js_file is returning a blank string" do
+
+      it "returns a response with the code 404 and a message that says that the file was not found or blank" do
+        mock_request = Rack::MockRequest.new js_server
+        mock_request.get("/js/not_there.js").body.should == Rush::JS_SERVER_404_MESSAGE
+        mock_request.get("/js/not_there.js").not_found?.should be true
+      end
+
+    end
+
+    context "#get_js_file is not returning a blank string" do
+
+      it "returns a 200 response with the proper js content" do
+        the_js_that_should_be_returned = Rush::FileFetcher.get_file_contents(File.join(js_test_folder, "test.js"))
+        mock_request = Rack::MockRequest.new js_server
+        mock_request.get("/js/test.js").body.should == the_js_that_should_be_returned
+        mock_request.get("/js/test.js").ok?.should be true
+      end
+
+    end
+
+  end
+
+
   describe "#get_js_file" do
-
-    let (:js_test_folder) { File.expand_path( "../test_fixtures/js_server_test", __FILE__ ) }
-    
-    let (:js_server) {
-      Rush::JSServer.new(OpenStruct.new(js_folder: js_test_folder))
-    }
-
-    let (:js_server_for_application_js_test) {
-      Rush::JSServer.new(OpenStruct.new(js_folder: File.join( js_test_folder, "application_js_test")))
-    }
-
-    let (:js_server_with_minification) {
-      Rush::JSServer.new(OpenStruct.new(js_folder: js_test_folder, minify_js: true))
-    }
 
     context "minify flag is set to true" do
 

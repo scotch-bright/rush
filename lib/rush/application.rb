@@ -31,9 +31,6 @@ module Rush
   	end
 
   	private
-  	def log(title, msg)
-      puts "\n\n\n" + "=" * 10 + title + "=" * 10 + "\n" + msg + "=" * 20 + "\n\n\n"
-    end
 
   	def parse_yamls_and_add_to_config
   		yaml_file_path = File.join @app_path, "rush_config.rb"

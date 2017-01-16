@@ -12,6 +12,23 @@ module Rush
       @minify = config.minify_js == true ? true : false
     end
 
+    # Method that is required to turn the class into a Rack app
+    def call(env)
+      request = Rack::Request.new(env)
+      path = request.path
+
+      # Removing the starting forward slash that comes with the path
+      path = path.gsub("/js/", "")
+
+      js_string = get_js_file(path)
+
+      if js_string == ""
+        ['404', {'Content-Type' => 'text/html'}, [Rush::JS_SERVER_404_MESSAGE]]
+      else
+        ['200', {'Content-Type' => 'application/javascript'}, [js_string]]
+      end 
+    end
+
     # Gets the JS file asked for. If .coffee file, it will be auto converted to .js file. If the file asked for is "application.js", then it will be a combination of all the files in the js folder in alphabetical order. Coffee files will be auto converted to CSS as required.
     def get_js_file(file_name)
       output = ""
