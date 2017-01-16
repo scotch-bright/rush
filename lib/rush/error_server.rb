@@ -18,7 +18,7 @@ module Rush
     private
     def setup_instance_variables_based_on_error_type
       case @error
-      when Rush::PageMakerError
+      when Rush::RushError
         @error_title = @error.message
         @error_description = @error.long_error_description
         @error_additional_details = ""

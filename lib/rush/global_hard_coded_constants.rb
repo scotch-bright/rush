@@ -1,4 +1,5 @@
 module Rush
+
   ERROR_TITLE_MALFORMED_JSON = "Malformed JSON in Data Folder"
   ERROR_DESC_MALFORMED_JSON = "It seems that some of the JSON files you have in the data folder of your application have malformed JSON. You can try to correct this with the help of a tool like <a href='http://jsonlint.com/'>http://jsonlint.com/</a>. To learn more about what JSON is and how to write valid JSON, you can <a href='https://www.tutorialspoint.com/json/'>check this out.</a> If you do not need any of the JSON files in the data folder, you can simply delete them all and this error will go away."
 
@@ -18,5 +19,8 @@ module Rush
   ERROR_DESC_NO_CALL_TO_RENDER_PAGE = "It seems that layout file does not call 'render_page' anywhere in its content. This is confusing for Rush. Rush will not know where the contents of the page need to be placed. Please make a call to 'render_page' somewhere in the layout."
 
   ERROR_TITLE_GENERAL_RUBY_ERROR = "Something Went Wrong When Parsing Ruby"
+
+  ERROR_TITLE_YAML_CONFIG_PARSE_ERROR = "Config File 'rush_config.yml' Could Not Be Parsed"
+  ERROR_DESC_YAML_CONFIG_PARSE_ERROR = "It seems that the config file was not in a proper format. Even though the config file may seem to be plain english, it needs to be formatted in a specific way. The config file needs to be in valid YAML format. To learn more about YAML and how to write correct YAML, you can <a href='https://learn.getgrav.org/advanced/yaml'>go here.</a>"  
 
 end

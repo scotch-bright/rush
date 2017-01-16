@@ -22,7 +22,7 @@ module Rush
         result = ERB.new(layout_template).result(binding)
 
         unless @is_render_page_called
-          raise Rush::PageMakerError.new(Rush::ERROR_TITLE_NO_CALL_TO_RENDER_PAGE, Rush::ERROR_DESC_NO_CALL_TO_RENDER_PAGE)
+          raise Rush::RushError.new(Rush::ERROR_TITLE_NO_CALL_TO_RENDER_PAGE, Rush::ERROR_DESC_NO_CALL_TO_RENDER_PAGE)
         end
 
         return result
@@ -41,7 +41,7 @@ module Rush
         partial_template = Rush::FileFetcher.get_file_contents(partial_file_path)
         ERB.new(partial_template).result(binding)
       else
-        raise Rush::PageMakerError.new(Rush::ERROR_TITLE_PARTIAL_NOT_FOUND + " #{partial_file_path}", Rush::ERROR_DESC_PARTIAL_NOT_FOUND)
+        raise Rush::RushError.new(Rush::ERROR_TITLE_PARTIAL_NOT_FOUND + " #{partial_file_path}", Rush::ERROR_DESC_PARTIAL_NOT_FOUND)
       end
     end
 
@@ -70,10 +70,6 @@ module Rush
       end
     end
 
-    def log(title, msg)
-      puts "\n\n\n" + "=" * 10 + title + "=" * 10 + "\n" + msg + "=" * 20 + "\n\n\n"
-    end
-
     def get_layout_file
       @page_html_path = File.join @pages_folder, "#{@path}.html"
       if Rush::FileFetcher.file_exists?(@page_html_path)
@@ -83,7 +79,7 @@ module Rush
           get_standard_layout
         end
       else
-        raise Rush::PageMakerError.new(Rush::ERROR_TITLE_PAGE_NOT_FOUND + " #{@page_html_path}", Rush::ERROR_DESC_PAGE_NOT_FOUND)
+        raise Rush::RushError.new(Rush::ERROR_TITLE_PAGE_NOT_FOUND + " #{@page_html_path}", Rush::ERROR_DESC_PAGE_NOT_FOUND)
       end
     end
 
@@ -93,7 +89,7 @@ module Rush
       if Rush::FileFetcher.file_exists?(@layout_path)
         Rush::FileFetcher.get_file_contents(@layout_path)
       else
-        raise Rush::PageMakerError.new(Rush::ERROR_TITLE_LAYOUT_NOT_FOUND + " #{@layout_path}", Rush::ERROR_DESC_LAYOUT_NOT_FOUND)
+        raise Rush::RushError.new(Rush::ERROR_TITLE_LAYOUT_NOT_FOUND + " #{@layout_path}", Rush::ERROR_DESC_LAYOUT_NOT_FOUND)
       end
     end
 
@@ -102,7 +98,7 @@ module Rush
       if Rush::FileFetcher.file_exists?(@layout_path)
         Rush::FileFetcher.get_file_contents(@layout_path)
       else
-        raise Rush::PageMakerError.new(Rush::ERROR_TITLE_STANDARD_LAYOUT_NOT_FOUND + " #{@layout_path}", Rush::ERROR_DESC_STANDARD_LAYOUT_NOT_FOUND)
+        raise Rush::RushError.new(Rush::ERROR_TITLE_STANDARD_LAYOUT_NOT_FOUND + " #{@layout_path}", Rush::ERROR_DESC_STANDARD_LAYOUT_NOT_FOUND)
       end
     end
 
@@ -115,14 +111,6 @@ module Rush
       end
     end
 
-  end
-
-  class PageMakerError < StandardError
-    attr_reader :long_error_description
-    def initialize(msg, long_error_description)
-      @long_error_description = long_error_description
-      super(msg)
-    end
   end
 
   class DataFolderParseError < StandardError
