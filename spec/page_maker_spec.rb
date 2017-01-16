@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'rush'
+require 'rack'
 
 describe Rush::PageMaker do
 
@@ -23,7 +24,33 @@ describe Rush::PageMaker do
     )
     expected_result = Rush::FileFetcher.get_file_contents( File.join(app_folder, "expected_text.txt") )
     result_got = pm.get_page("welcome")
-    return { expected: expected_result, got: result_got }
+    return { expected: expected_result, got: result_got[:html], page_maker: pm }
+  end
+
+  describe "#call" do
+
+    context "the page can be returned properly" do
+
+      it "proper rack respose is returned" do
+        pm = get_page_maker_from_folder_path("data_puller_good")[:page_maker]
+        mock_request = Rack::MockRequest.new pm
+        mock_request.get("/welcome").body.should == "Khoj"
+        mock_request.get("/welcome").ok?.should be true
+      end
+
+    end
+
+    context "the page cannot be returned, there is an error" do
+
+      it "proper failed rack response is returned" do
+        pm = get_page_maker_from_folder_path("data_puller_error")[:page_maker]
+        mock_request = Rack::MockRequest.new pm
+        expect(mock_request.get("/welcome").body).to include("Rush Error", Rush::ERROR_TITLE_MALFORMED_JSON, Rush::ERROR_DESC_MALFORMED_JSON)
+        mock_request.get("/welcome").server_error?.should be true
+      end
+
+    end
+
   end
 
   describe "#get_page" do
@@ -83,13 +110,13 @@ describe Rush::PageMaker do
 
     context "the view was not found in the view folder" do
 
-        it "returns a friendly error indicating that no page was found" do
-          ## Error Case
-          # Folder Made
-          folder_name = "no_page"
-          result_hash = get_page_maker_from_folder_path(folder_name)
-          expect(result_hash[:got]).to include("Rush Error", Rush::ERROR_TITLE_PAGE_NOT_FOUND, Rush::ERROR_DESC_PAGE_NOT_FOUND)
-        end
+      it "returns a friendly error indicating that no page was found" do
+        ## Error Case
+        # Folder Made
+        folder_name = "no_page"
+        result_hash = get_page_maker_from_folder_path(folder_name)
+        expect(result_hash[:got]).to include("Rush Error", Rush::ERROR_TITLE_PAGE_NOT_FOUND, Rush::ERROR_DESC_PAGE_NOT_FOUND)
+      end
 
     end
 

@@ -1,4 +1,6 @@
-module Rush
+  require 'rack'
+
+  module Rush
 
   class PageMaker
 
@@ -13,6 +15,23 @@ module Rush
       @layouts_folder = config.layouts_folder
     end
 
+    def call(env)
+      request = Rack::Request.new(env)
+      path = request.path
+
+      # Removing the starting forward slash that comes with the path
+      path[0] = ''
+
+      page_result_hash = get_page(path)
+
+      if page_result_hash[:error] == false
+        ['200', {'Content-Type' => 'text/html'}, [page_result_hash[:html]]]
+      else
+        ['500', {'Content-Type' => 'text/html'}, [page_result_hash[:html]]]
+      end 
+
+    end
+
     def get_page(path)
       begin
         @path = path
@@ -25,11 +44,11 @@ module Rush
           raise Rush::RushError.new(Rush::ERROR_TITLE_NO_CALL_TO_RENDER_PAGE, Rush::ERROR_DESC_NO_CALL_TO_RENDER_PAGE)
         end
 
-        return result
+        return { html: result, error: false }
 
       rescue Exception => e
         es = Rush::ErrorServer.new e
-        es.get_error_html
+        return { html: es.get_error_html, error: true }
       end
     end
 
