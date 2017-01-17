@@ -6,11 +6,11 @@ describe Rush::Application do
 
   let (:test_fixtures_folder_path) { File.expand_path( "../test_fixtures/application_test/rashidas_website", __FILE__ ) }
   let (:application) { Rush::Application.new test_fixtures_folder_path }
-  let (:mock_request) { Rack::MockRequest.new application.rack_app }
+  let (:mock_request) { Rack::MockRequest.new application }
 
   let (:test_fixtures_folder_path_bad_config) { File.expand_path( "../test_fixtures/application_test/rashidas_website_bad_config", __FILE__ ) }
   let (:application_bad_config) { Rush::Application.new test_fixtures_folder_path_bad_config }
-  let (:mock_request_bad_config) { Rack::MockRequest.new application_bad_config.rack_app }
+  let (:mock_request_bad_config) { Rack::MockRequest.new application_bad_config }
 
   describe "#config" do
 
@@ -95,7 +95,7 @@ describe Rush::Application do
       context "the page can be sucessfully displayed" do
 
         it "responds with the HTML" do
-          mock_request.get("/welcome").body.should == "it works!"
+          mock_request.get("/welcome").body.should == "Page!"
         end
 
         it "responds content_type 'text/html'" do

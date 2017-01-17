@@ -61,9 +61,6 @@ module Rush
     end
 
     private
-    def log(title, msg)
-      puts "\n\n\n" + "=" * 10 + title + "=" * 10 + "\n" + msg + "=" * 20 + "\n\n\n"
-    end
 
     def get_css_file_contents(css_file_name)
       css_file_path = File.join(@css_folder_path, css_file_name)
