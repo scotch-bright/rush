@@ -8,6 +8,7 @@ require "rush/js_server"
 require "rush/error_server"
 require "rush/global_hard_coded_constants"
 require "rush/application"
+require "rush/generator"
 
 module Rush
   # Your code goes here...
