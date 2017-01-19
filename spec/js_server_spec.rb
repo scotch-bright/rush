@@ -29,6 +29,16 @@ describe Rush::JSServer do
 
     end
 
+    context "#get_js_file is raising an error" do
+
+      it "returns a response with the code 500 and a nice rush error screen to explain what might have gone wrong" do
+        mock_request = Rack::MockRequest.new js_server
+        expect(mock_request.get("/js/bad_coffee_test.coffee").body).to include("Rush Error", Rush::ERROR_TITLE_MALFORMED_COFFEE_SCRIPT, Rush::ERROR_DESC_MALFORMED_COFFEE_SCRIPT)
+        mock_request.get("/js/bad_coffee_test.coffee").server_error?.should be true
+      end
+
+    end
+
     context "#get_js_file is not returning a blank string" do
 
       it "returns a 200 response with the proper js content" do
@@ -61,6 +71,14 @@ describe Rush::JSServer do
         it "converts coffee script to js and returns it" do
           the_js_that_should_be_returned = Rush::FileFetcher.get_file_contents(File.join(js_test_folder, "coffee_test_result.js"))
           expect (js_server.get_js_file("coffee_test.coffee")).should eq the_js_that_should_be_returned
+        end
+
+      end
+
+      context "the .coffee file is malformed" do
+
+        it "raises an error" do
+          expect { js_server.get_js_file("bad_coffee_test.coffee") }.to raise_error(Rush::RushError)
         end
 
       end

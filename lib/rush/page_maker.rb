@@ -22,6 +22,8 @@
       # Removing the starting forward slash that comes with the path
       path[0] = ''
 
+      path = "index" if path == ''
+
       page_result_hash = get_page(path)
 
       if page_result_hash[:error] == false

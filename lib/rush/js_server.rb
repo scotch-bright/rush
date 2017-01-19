@@ -20,13 +20,18 @@ module Rush
       # Removing the starting forward slash that comes with the path
       path = path.gsub("/js/", "")
 
-      js_string = get_js_file(path)
+      begin
+        js_string = get_js_file(path)
+        if js_string == ""
+          ['404', {'Content-Type' => 'text/html'}, [Rush::JS_SERVER_404_MESSAGE]]
+        else
+          ['200', {'Content-Type' => 'application/javascript'}, [js_string]]
+        end
+      rescue Exception => e
+        error_server = Rush::ErrorServer.new e
+        ['500', {'Content-Type' => 'text/html'}, [error_server.get_error_html]]
+      end
 
-      if js_string == ""
-        ['404', {'Content-Type' => 'text/html'}, [Rush::JS_SERVER_404_MESSAGE]]
-      else
-        ['200', {'Content-Type' => 'application/javascript'}, [js_string]]
-      end 
     end
 
     # Gets the JS file asked for. If .coffee file, it will be auto converted to .js file. If the file asked for is "application.js", then it will be a combination of all the files in the js folder in alphabetical order. Coffee files will be auto converted to CSS as required.
@@ -34,8 +39,13 @@ module Rush
       output = ""
 
       if is_file_coffee_script?(file_name)
-        # Handle coffee script files
-        output = CoffeeScript.compile get_js_file_contents(file_name)
+        # Handle coffee script files and any exceptions due to malformed coffee script files
+        begin
+          output = CoffeeScript.compile get_js_file_contents(file_name)
+        rescue
+          raise Rush::RushError.new Rush::ERROR_TITLE_MALFORMED_COFFEE_SCRIPT + file_name, Rush::ERROR_DESC_MALFORMED_COFFEE_SCRIPT
+        end
+
       else
 
         if file_name == "application.js"

@@ -38,6 +38,17 @@ describe Rush::PageMaker do
         mock_request.get("/welcome").ok?.should be true
       end
 
+      context "the path is '/', as in root path" do
+
+        it  "defaults to path index" do
+          pm = get_page_maker_from_folder_path("data_puller_good")[:page_maker]
+          mock_request = Rack::MockRequest.new pm
+          mock_request.get("/").body.should == "Yay!"
+          mock_request.get("/").ok?.should be true
+        end
+
+      end
+
     end
 
     context "the page cannot be returned, there is an error" do

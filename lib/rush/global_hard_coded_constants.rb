@@ -1,5 +1,8 @@
 module Rush
 
+  ERROR_TITLE_MALFORMED_COFFEE_SCRIPT = "Malformed Coffescipt :: "
+  ERROR_DESC_MALFORMED_COFFEE_SCRIPT = "It seems that the CoffeeScript file has something wrong with it. The parser is complaining. Correct the issues and you will get a happy 200 once again!"
+
   ERROR_TITLE_MALFORMED_JSON = "Malformed JSON in Data Folder"
   ERROR_DESC_MALFORMED_JSON = "It seems that some of the JSON files you have in the data folder of your application have malformed JSON. You can try to correct this with the help of a tool like <a href='http://jsonlint.com/'>http://jsonlint.com/</a>. To learn more about what JSON is and how to write valid JSON, you can <a href='https://www.tutorialspoint.com/json/'>check this out.</a> If you do not need any of the JSON files in the data folder, you can simply delete them all and this error will go away."
 
