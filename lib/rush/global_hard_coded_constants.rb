@@ -1,5 +1,9 @@
 module Rush
 
+  ERROR_RUSH_MAKE_NO_FOLDER_FOUND = "No Folder Found :: Cannot Make Rush Static Site"
+  ERROR_RUSH_MAKE_NO_PAGES_FOLDER_FOUND = "No Pages Folder Found :: Cannot make Rush static site. Rush does not know where to start! Please check weather you are currently in a Rush project"
+  ERROR_RUSH_MAKE_NO_PAGES_FOUND = "No Pages Found In Pages Folder :: Rush was able to find a pages folder. But inside the pages folder, there do not seem to be any pages. Hence there is nothing to be made!"
+
   ERROR_TITLE_MALFORMED_COFFEE_SCRIPT = "Malformed Coffescipt :: "
   ERROR_DESC_MALFORMED_COFFEE_SCRIPT = "It seems that the CoffeeScript file has something wrong with it. The parser is complaining. Correct the issues and you will get a happy 200 once again!"
 

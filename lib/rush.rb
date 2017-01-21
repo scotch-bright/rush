@@ -10,6 +10,7 @@ require "rush/error_server"
 require "rush/global_hard_coded_constants"
 require "rush/generator"
 require "rush/cli"
+require "rush/static_maker"
 
 module Rush
   # Your code goes here...
