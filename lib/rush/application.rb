@@ -4,7 +4,7 @@ module Rush
 
   class Application
 
-    attr_reader :config
+    attr_reader :config, :css_server, :js_server, :page_maker
 
     def initialize(app_path)
       @bad_config = false

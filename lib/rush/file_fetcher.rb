@@ -16,7 +16,8 @@ module Rush
 
     # Gets the file name without the extension from a given path
     def self.get_file_name_from_path(file_path)
-      File.basename(file_path).split(".")[0]
+      base_name = File.basename(file_path)
+      (base_name.split(".") - [base_name.split(".")[-1]]).join(".")
     end
 
     # Checks if a folder exists

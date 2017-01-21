@@ -31,7 +31,7 @@ describe Rush::StaticMaker do
     end
 
     before(:all) do
-      make_rush_app File.expand_path( "../test_fixtures/maker_test/test_rush_app_static", __FILE__ )
+      make_rush_app File.expand_path( "../test_fixtures/maker_test/test_rush_app", __FILE__ )
     end
 
     context "there was no folder found at the path" do

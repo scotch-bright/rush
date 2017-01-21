@@ -46,10 +46,10 @@ describe Rush::FileFetcher do
     it "gets file name from the full file path" do
       file_path = File.join( test_fixtures_folder_path, "lots_of_files", "1.html.erb")
       file_path_1 = File.join( test_fixtures_folder_path, "lots_of_files", "2a.erb")
-      file_path_2 = File.join( test_fixtures_folder_path, "lots_of_files", "3b")
-      expect Rush::FileFetcher.get_file_name_from_path(file_path).should eq "1"
+      file_path_2 = File.join( test_fixtures_folder_path, "lots_of_files", "jquery.min.js")
+      expect Rush::FileFetcher.get_file_name_from_path(file_path).should eq "1.html"
       expect Rush::FileFetcher.get_file_name_from_path(file_path_1).should eq "2a"
-      expect Rush::FileFetcher.get_file_name_from_path(file_path_2).should eq "3b"
+      expect Rush::FileFetcher.get_file_name_from_path(file_path_2).should eq "jquery.min"
     end
 
   end
