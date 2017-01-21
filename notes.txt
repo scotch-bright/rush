@@ -4,8 +4,3 @@
 
 TO DO:
 1. Make the static site generator
-2. What happens when CoffeeSript is malformed
-3. Test out directly calling coffee files from script tag
-4. Try out directly callin sccss files
-5. What happens when SCSS files are malformed
-6. Make the root as index.html

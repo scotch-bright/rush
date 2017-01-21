@@ -28,8 +28,7 @@ module Rush
           ['200', {'Content-Type' => 'application/javascript'}, [js_string]]
         end
       rescue Exception => e
-        error_server = Rush::ErrorServer.new e
-        ['500', {'Content-Type' => 'text/html'}, [error_server.get_error_html]]
+        ['500', {'Content-Type' => 'text/html'}, [e.message + " :: " + e.long_error_description]]
       end
 
     end

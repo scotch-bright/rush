@@ -29,6 +29,16 @@ describe Rush::CSSServer do
 
     end
 
+    context "#get_css_file is raising an error" do
+
+      it "returns a response with the code 500 and a nice rush error screen to explain what might have gone wrong" do
+        mock_request = Rack::MockRequest.new css_server
+        expect(mock_request.get("/css/bad_scss.scss").body).to include(Rush::ERROR_TITLE_MALFORMED_SCSS_SCRIPT)
+        mock_request.get("/css/bad_scss.scss").server_error?.should be true
+      end
+
+    end
+
     context "#get_css_file is not returning a blank string" do
 
       it "returns a 200 response with the propery css content" do
@@ -60,6 +70,14 @@ describe Rush::CSSServer do
         it "converts scss to css and returns it" do
           the_css_that_should_be_returned = Rush::FileFetcher.get_file_contents(File.join(css_test_folder, "test.css"))
           expect (css_server.get_css_file("test.scss")).should eq the_css_that_should_be_returned
+        end
+
+      end
+
+      context "the .scss file is malformed" do
+
+        it "raises an error" do
+          expect { css_server.get_css_file("bad_scss.scss") }.to raise_error(Rush::RushError)
         end
 
       end

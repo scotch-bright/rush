@@ -33,7 +33,7 @@ describe Rush::JSServer do
 
       it "returns a response with the code 500 and a nice rush error screen to explain what might have gone wrong" do
         mock_request = Rack::MockRequest.new js_server
-        expect(mock_request.get("/js/bad_coffee_test.coffee").body).to include("Rush Error", Rush::ERROR_TITLE_MALFORMED_COFFEE_SCRIPT, Rush::ERROR_DESC_MALFORMED_COFFEE_SCRIPT)
+        expect(mock_request.get("/js/bad_coffee_test.coffee").body).to include(Rush::ERROR_TITLE_MALFORMED_COFFEE_SCRIPT)
         mock_request.get("/js/bad_coffee_test.coffee").server_error?.should be true
       end
 

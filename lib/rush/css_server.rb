@@ -19,13 +19,17 @@ module Rush
       # Removing the starting forward slash that comes with the path
       path = path.gsub("/css/", "")
 
-      css_string = get_css_file(path)
+      begin
+        css_string = get_css_file(path)
+        if css_string == ""
+          ['404', {'Content-Type' => 'text/html'}, [Rush::CSS_SERVER_404_MESSAGE]]
+        else
+          ['200', {'Content-Type' => 'text/css'}, [css_string]]
+        end
+      rescue Exception => e
+        ['500', {'Content-Type' => 'text/html'}, [e.message + " :: " + e.long_error_description]]
+      end
 
-      if css_string == ""
-        ['404', {'Content-Type' => 'text/html'}, [Rush::CSS_SERVER_404_MESSAGE]]
-      else
-        ['200', {'Content-Type' => 'text/css'}, [css_string]]
-      end 
     end
 
     # Gets the CSS file asked for. If an SCSS file is asked for, the SCSS will be converted to CSS and then served. This is done so that the developer can simply add a style sheet reference to a .scss file and will still get back a CSS file effortlessly. Additionally, if "application.css" is asked for then all the files in the CSS folder are combined in alphabetical order. If there are SCSS files they are tuned into CSS files.
@@ -36,7 +40,11 @@ module Rush
 
       if is_file_scss?(css_file_name)
         # SCSS file handling
-        output = Sass::Engine.new(get_css_file_contents(css_file_name), :syntax => :scss).render
+        begin
+          output = Sass::Engine.new(get_css_file_contents(css_file_name), :syntax => :scss).render
+        rescue
+          raise Rush::RushError.new Rush::ERROR_TITLE_MALFORMED_SCSS_SCRIPT + css_file_name, Rush::ERROR_DESC_MALFORMED_SCSS_SCRIPT
+        end
       else
 
         if css_file_name == "application.css"
@@ -51,7 +59,7 @@ module Rush
         end
 
       end
-      
+
       # Minfy the CSS file if needed
       if @minify
         output = minify_css(output)
@@ -186,4 +194,3 @@ module Rush
   end
 
 end
-
