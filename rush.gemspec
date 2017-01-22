@@ -38,4 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'sass', '~> 3.4'
   spec.add_runtime_dependency 'uglifier', '~> 3.0'
   spec.add_runtime_dependency 'coffee-script', '~> 2.3'
+  spec.add_runtime_dependency 'nokogiri', '~> 1.6'
 end

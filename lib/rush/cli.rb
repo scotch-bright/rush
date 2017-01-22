@@ -18,6 +18,13 @@ module Rush
     	Rack::Handler::WEBrick.run app
     end
 
+    desc "make", "Makes the static site."
+    def make
+      maker = Rush::StaticMaker.new Dir.pwd
+      puts "Starting the process of making the static site.\nOnce ready, done you can find the static site at '#{maker.get_output_folder_path}'"
+      maker.make_project
+    end
+
   end
 
 end
