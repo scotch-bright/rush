@@ -25,6 +25,7 @@ module Rush
       make_js_folder
       make_js_files
       make_html_files
+      copy_static_files_folders
     end
 
     private
@@ -118,6 +119,17 @@ module Rush
       end
     end
 
+    def copy_static_files_folders
+    	copy_folder File.join(@folder_path, "images"), File.join(@output_folder_path, "images")
+    	copy_folder File.join(@folder_path, "static_files"), File.join(@output_folder_path, "static_files")
+    end
+
+    def copy_folder source_path, destination_path
+    	if Rush::FileFetcher.directory_exists? source_path
+    		FileUtils.copy_entry source_path, destination_path
+    	end
+    end
+
     def create_or_overwrite_file file_path, contents
       File.open(file_path, "w") { |f| f.write(contents) }
     end
@@ -136,6 +148,10 @@ module Rush
     def make_js_folder
       @js_folder_path = File.join @output_folder_path, "js"
       make_dir_if_it_does_not_exist @js_folder_path
+    end
+
+    def log(title, msg)
+      puts "\n\n\n" + "=" * 10 + title + "=" * 10 + "\n" + msg + "=" * 20 + "\n\n\n"
     end
 
   end

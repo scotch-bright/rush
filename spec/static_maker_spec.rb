@@ -13,6 +13,8 @@ describe Rush::StaticMaker do
   let (:made_project_css_folder_path) { File.expand_path( "../test_fixtures/maker_test/test_rush_app_static/css", __FILE__ )  }
   let (:made_project_js_folder_path) { File.expand_path( "../test_fixtures/maker_test/test_rush_app_static/js", __FILE__ )  }
   let (:made_project_welcome_folder_path) { File.expand_path( "../test_fixtures/maker_test/test_rush_app_static/welcome", __FILE__ )  }
+  let (:made_project_images_folder_path) { File.expand_path( "../test_fixtures/maker_test/test_rush_app_static/images", __FILE__ )  }
+  let (:made_project_static_files_folder_path) { File.expand_path( "../test_fixtures/maker_test/test_rush_app_static/static_files", __FILE__ )  }
 
   let (:solution_project_path) { File.expand_path( "../test_fixtures/maker_test/solution", __FILE__ )  }
   let (:solution_project_css_folder_path) { File.expand_path( "../test_fixtures/maker_test/solution/css", __FILE__ )  }
@@ -32,6 +34,11 @@ describe Rush::StaticMaker do
 
     before(:all) do
       make_rush_app File.expand_path( "../test_fixtures/maker_test/test_rush_app", __FILE__ )
+    end
+
+    it "makes a copy of the images, fonts and static files folders into the final folder" do
+      expect(Rush::FileFetcher.file_exists?(File.join made_project_images_folder_path, "header.jpg")).to be true
+      expect(Rush::FileFetcher.file_exists?(File.join made_project_static_files_folder_path, "static.pdf")).to be true
     end
 
     context "there was no folder found at the path" do
@@ -123,17 +130,17 @@ describe Rush::StaticMaker do
 
               it "changes the file names in HTML of the '.coffee' files to '.js' files and add the '../' to the js file path'" do
                 the_html_file_that_was_found = File.read File.join made_project_path, "welcome", "index.html"
-                expect(the_html_file_that_was_found).to include ('<script src="js/test.js"></script>')
+                expect(the_html_file_that_was_found).to include ('<script src="../js/test.js"></script>')
               end
 
               it "changes the file names path from '/images/image_file.jpeg' to '../images/image_file.jpeg' in HTML" do
                 the_html_file_that_was_found = File.read File.join made_project_path, "welcome", "index.html"
-                expect(the_html_file_that_was_found).to include ("<img src='../images/header.jpg'>")
+                expect(the_html_file_that_was_found).to include ('<img src="../images/header.jpg">')
               end
 
               it "changes the file names path from '/static_files/file_name.pdf' to '../static_files/file_name.pdf' in HTML" do
                 the_html_file_that_was_found = File.read File.join made_project_path, "welcome", "index.html"
-                expect(the_html_file_that_was_found).to include ("<a href='../static_files/static.pdf'>")
+                expect(the_html_file_that_was_found).to include ('<a href="../static_files/static.pdf">')
               end
 
             end
