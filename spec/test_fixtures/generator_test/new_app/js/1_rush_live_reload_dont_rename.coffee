@@ -3,9 +3,11 @@
 # convenience baked into the Rush framework. This will be automatically removed when
 # your site is being made ready for production. DO NOT place any JS here and DO NOT
 # change the name of this file and everything will go well.
-window.onload = ->
-  setInterval (->
-    location.reload()
+
+if true
+  window.onload = ->
+    setInterval (->
+      location.reload()
+      return
+    ), 10000
     return
-  ), 10000
-  return
