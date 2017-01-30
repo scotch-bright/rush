@@ -58,33 +58,26 @@ module Rush
       end
     end
 
-    def chnage_scss_extenstions_to_css_extenstions_in_html the_html
+    def change_extensions the_html, tag, attribute, start_with_end_with_hash
       html_doc = Nokogiri::HTML(the_html)
 
-      html_doc.css("link").each do |ele|
-        unless ele['href'].nil?
-          the_value = ele['href']
-          if the_value.start_with?("css/") && the_value.end_with?(".scss")
-            ele['href'] = ele['href'].gsub(/\.scss$/, ".css")
+      html_doc.css(tag).each do |ele|
+        unless ele[attribute].nil?
+          the_value = ele[attribute]
+          if the_value.start_with?(start_with_end_with_hash[:start_with]) && the_value.end_with?(start_with_end_with_hash[:end_with])
+            ele[attribute] = ele[attribute].gsub(start_with_end_with_hash[:replace], start_with_end_with_hash[:replace_with])
           end
         end
       end
       html_doc.to_html
     end
 
+    def chnage_scss_extenstions_to_css_extenstions_in_html the_html
+      change_extensions the_html, 'link', 'href', { start_with: 'css/', end_with: '.scss', replace: /\.scss$/, replace_with: '.css' }
+    end
+
     def chnage_coffee_extenstions_to_js_extenstions_in_html the_html
-      html_doc = Nokogiri::HTML(the_html)
-
-      html_doc.css("script").each do |ele|
-        unless ele['src'].nil?
-          the_value = ele['src']
-          if the_value.start_with?("js/") && the_value.end_with?(".coffee")
-            ele['src'] = ele['src'].gsub(/\.coffee$/, ".js")
-          end
-        end
-      end
-
-      html_doc.to_html
+      change_extensions the_html, 'script', 'src', { start_with: 'js/', end_with: '.coffee', replace: /\.coffee$/, replace_with: '.js' }
     end
 
     def make_dir_if_it_does_not_exist dir_path

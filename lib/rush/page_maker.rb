@@ -1,6 +1,6 @@
-  require 'rack'
+require 'rack'
 
-  module Rush
+module Rush
 
   class PageMaker
 
@@ -30,7 +30,7 @@
         ['200', {'Content-Type' => 'text/html'}, [page_result_hash[:html]]]
       else
         ['500', {'Content-Type' => 'text/html'}, [page_result_hash[:html]]]
-      end 
+      end
 
     end
 
@@ -47,7 +47,6 @@
         end
 
         return { html: result, error: false }
-
       rescue Exception => e
         es = Rush::ErrorServer.new e
         return { html: es.get_error_html, error: true }
@@ -137,10 +136,6 @@
       else
         return false
       end
-    end
-
-    def log(title, msg)
-      puts "\n\n\n" + "=" * 10 + title + "=" * 10 + "\n" + msg + "=" * 20 + "\n\n\n"
     end
 
   end
