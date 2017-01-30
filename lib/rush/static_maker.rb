@@ -94,28 +94,22 @@ module Rush
     end
 
     def make_js_files
-      source_js_folder_path = @app.config.js_folder
-      if Rush::FileFetcher.directory_exists? source_js_folder_path
-        array_of_js_file_names = Rush::FileFetcher.array_of_file_paths(source_js_folder_path).map { |e| Rush::FileFetcher.get_file_name_and_extension_from_path(e) }
-        array_of_js_file_names.each do |file_name|
-          final_file_name = Rush::FileFetcher.get_file_name_from_path(file_name) + ".js"
-          final_file_path = File.join @js_folder_path, final_file_name
-          create_or_overwrite_file(final_file_path, @app.js_server.get_js_file(file_name))
-        end
-        create_or_overwrite_file(File.join(@js_folder_path, "application.js"), @app.js_server.get_js_file("application.js"))
-      end
+      make_asset_files @app.config.js_folder, ".js", @js_folder_path, @app.js_server
     end
 
     def make_css_files
-      source_css_folder_path = @app.config.css_folder
-      if Rush::FileFetcher.directory_exists? source_css_folder_path
-        array_of_css_file_names = Rush::FileFetcher.array_of_file_paths(source_css_folder_path).map { |e| Rush::FileFetcher.get_file_name_and_extension_from_path(e) }
-        array_of_css_file_names.each do |file_name|
-          final_file_name = Rush::FileFetcher.get_file_name_from_path(file_name) + ".css"
-          final_file_path = File.join @css_folder_path, final_file_name
-          create_or_overwrite_file(final_file_path, @app.css_server.get_css_file(file_name))
+      make_asset_files @app.config.css_folder, ".css", @css_folder_path, @app.css_server
+    end
+
+    def make_asset_files asset_folder, file_extension, final_asset_folder_path, asset_server
+      if Rush::FileFetcher.directory_exists? asset_folder
+        array_of_file_names = Rush::FileFetcher.array_of_file_paths(asset_folder).map { |e| Rush::FileFetcher.get_file_name_and_extension_from_path(e) }
+        array_of_file_names.each do |file_name|
+          final_file_name = Rush::FileFetcher.get_file_name_from_path(file_name) + file_extension
+          final_file_path = File.join final_asset_folder_path, final_file_name
+          create_or_overwrite_file(final_file_path, asset_server.get_file(file_name))
         end
-        create_or_overwrite_file(File.join(@css_folder_path, "application.css"), @app.css_server.get_css_file("application.css"))
+        create_or_overwrite_file(File.join(final_asset_folder_path, "application" + file_extension), asset_server.get_file("application.css"))
       end
     end
 
