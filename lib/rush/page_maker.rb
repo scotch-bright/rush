@@ -56,7 +56,14 @@
 
     private
 
-    def render_partial(file_name)
+    def render_partial(file_name, locals_hash=nil)
+
+      if locals_hash != nil
+        locals_hash.each do |k, v|
+          self.define_singleton_method(k) { v }
+        end
+      end
+
       partial_file_path = File.join @partials_folder, "#{file_name}.html"
       if Rush::FileFetcher.file_exists?(partial_file_path)
         partial_template = Rush::FileFetcher.get_file_contents(partial_file_path)
@@ -130,6 +137,10 @@
       else
         return false
       end
+    end
+
+    def log(title, msg)
+      puts "\n\n\n" + "=" * 10 + title + "=" * 10 + "\n" + msg + "=" * 20 + "\n\n\n"
     end
 
   end

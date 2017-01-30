@@ -35,9 +35,9 @@ module Rush
     private
     def set_up_servers
       @css_server = Rush::CSSServer.new @config
-      @js_server = Rush::JSServer.new(@config)
-      @page_maker = Rush::PageMaker.new(@config)
-      @static_server = Rack::Directory.new(@app_path)
+      @js_server = Rush::JSServer.new @config
+      @page_maker = Rush::PageMaker.new @config
+      @static_server = Rack::Directory.new @app_path
     end
 
     def set_up_config

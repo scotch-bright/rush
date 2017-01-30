@@ -150,10 +150,6 @@ module Rush
       make_dir_if_it_does_not_exist @js_folder_path
     end
 
-    def log(title, msg)
-      puts "\n\n\n" + "=" * 10 + title + "=" * 10 + "\n" + msg + "=" * 20 + "\n\n\n"
-    end
-
   end
 
   class RushMakeError < StandardError

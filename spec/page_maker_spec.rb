@@ -144,6 +144,17 @@ describe Rush::PageMaker do
             result_hash[:got].should == result_hash[:expected]
           end
 
+        context "the partial also passes some locals as a param" do
+
+          it "renders the partial variables in the view" do
+            # Folder Made
+            folder_name = "view_calls_for_partial_with_locals"
+            result_hash = get_page_maker_from_folder_path(folder_name)
+            result_hash[:got].should == result_hash[:expected]
+          end
+
+        end
+
         end
 
         context "the partial was not found in the partial folder" do
