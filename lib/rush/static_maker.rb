@@ -102,13 +102,14 @@ module Rush
           final_file_path = File.join final_asset_folder_path, final_file_name
           create_or_overwrite_file(final_file_path, asset_server.get_file(file_name))
         end
-        create_or_overwrite_file(File.join(final_asset_folder_path, "application" + file_extension), asset_server.get_file("application.css"))
+        create_or_overwrite_file(File.join(final_asset_folder_path, "application" + file_extension), asset_server.get_file("application" + file_extension))
       end
     end
 
     def copy_static_files_folders
     	copy_folder File.join(@folder_path, "images"), File.join(@output_folder_path, "images")
     	copy_folder File.join(@folder_path, "static_files"), File.join(@output_folder_path, "static_files")
+      copy_folder File.join(@folder_path, "fonts"), File.join(@output_folder_path, "fonts")
     end
 
     def copy_folder source_path, destination_path

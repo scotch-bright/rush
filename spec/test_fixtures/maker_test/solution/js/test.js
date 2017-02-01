@@ -1,8 +1,8 @@
 (function() {
-  window.onload = function() {
-    setInterval((function() {
-      location.reload();
-    }), 10000);
-  };
+  var number;
+
+  if (opposite) {
+    number = -42;
+  }
 
 }).call(this);

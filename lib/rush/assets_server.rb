@@ -28,6 +28,8 @@ module Rush
 
 
     def get_file(file_name)
+      return "" if file_name.include? ".exclude"
+
       output = ""
 
       if does_file_need_pre_processing file_name

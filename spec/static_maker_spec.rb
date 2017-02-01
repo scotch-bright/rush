@@ -15,6 +15,7 @@ describe Rush::StaticMaker do
   let (:made_project_welcome_folder_path) { File.expand_path( "../test_fixtures/maker_test/test_rush_app_static/welcome", __FILE__ )  }
   let (:made_project_images_folder_path) { File.expand_path( "../test_fixtures/maker_test/test_rush_app_static/images", __FILE__ )  }
   let (:made_project_static_files_folder_path) { File.expand_path( "../test_fixtures/maker_test/test_rush_app_static/static_files", __FILE__ )  }
+  let (:made_project_fonts_path) { File.expand_path( "../test_fixtures/maker_test/test_rush_app_static/fonts", __FILE__ )  }
 
   let (:solution_project_path) { File.expand_path( "../test_fixtures/maker_test/solution", __FILE__ )  }
   let (:solution_project_css_folder_path) { File.expand_path( "../test_fixtures/maker_test/solution/css", __FILE__ )  }
@@ -39,6 +40,7 @@ describe Rush::StaticMaker do
     it "makes a copy of the images, fonts and static files folders into the final folder" do
       expect(Rush::FileFetcher.file_exists?(File.join made_project_images_folder_path, "header.jpg")).to be true
       expect(Rush::FileFetcher.file_exists?(File.join made_project_static_files_folder_path, "static.pdf")).to be true
+      expect(Rush::FileFetcher.file_exists?(File.join made_project_fonts_path, "fontawesome-webfont.eot")).to be true
     end
 
     context "there was no folder found at the path" do
@@ -92,21 +94,25 @@ describe Rush::StaticMaker do
           end
 
           it "creates a css folder with a file called 'application.css' in it" do
-              the_css_that_should_be_there = File.read File.join solution_project_css_folder_path, "application.css"
-              the_css_that_was_found = File.read File.join made_project_css_folder_path, "application.css"
-              the_css_that_was_found.should == the_css_that_should_be_there
+            the_css_that_should_be_there = File.read File.join solution_project_css_folder_path, "application.css"
+            the_css_that_was_found = File.read File.join made_project_css_folder_path, "application.css"
+            the_css_that_was_found.should == the_css_that_should_be_there
           end
 
-          it "creates a js folder with a file called 'application.js' in it" do
+          context "the js folder contains a file with with the '.exclude.' in the file name" do
+
+            it "creates a js folder with a file called 'application.js' in it which does not incude the contents of the '.exclude.' file" do
               the_js_that_should_be_there = File.read File.join solution_project_js_folder_path, "application.js"
               the_js_that_was_found = File.read File.join made_project_js_folder_path, "application.js"
               the_js_that_was_found.should == the_js_that_should_be_there
+            end
+
           end
 
           it "creates a file in the root folder of the output folder called 'index.html'" do
-              the_html_file_that_should_be_there = File.read File.join solution_project_path, "index.html"
-              the_html_file_that_was_found = File.read File.join made_project_path, "index.html"
-              the_html_file_that_was_found.should == the_html_file_that_should_be_there
+            the_html_file_that_should_be_there = File.read File.join solution_project_path, "index.html"
+            the_html_file_that_was_found = File.read File.join made_project_path, "index.html"
+            the_html_file_that_was_found.should == the_html_file_that_should_be_there
           end
 
           context "the pages folder contains files other than index.html" do
