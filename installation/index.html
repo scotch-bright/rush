@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link rel="stylesheet" href="../css/application.css">
+	<script src="../js/modernizr.js"></script>
+</head>
+
+<body class="">
+	<!-- End of Preloader -->
+	<div class="page js-page ">
+		<!-- Header -->
+		<div class="header header-over large">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-xs-5">
+						<!-- Logo Image -->
+						<a href="index.html" class="logo-image logo-animated">
+							<img src="../images/logos/logo.png" alt="logo">
+						</a>
+						<!-- End of Logo Image -->
+					</div>
+					<div class="col-md-9 col-sm-6 col-xs-7">
+						<!-- Menu -->
+						<nav class="right helper">
+							<ul class="menu sf-menu js-menu">
+								<li>
+									<a href="index">Home
+									</a>
+								</li>
+								<li>
+									<a href="installation">Installation</a>
+								</li>
+								<li>
+									<a href="tutorial">Tutorial</a>
+								</li>
+								<li>
+									<a href="https://github.com/scotch-bright/rush/">GitHub</a>
+								</li>
+								<li>
+									<a href="how_it_works">How It Works?</a>
+								</li>
+								<li>
+									<a href="about">About</a>
+								</li>
+							</ul>
+						</nav>
+						<!-- End of Menu -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End of Header -->
+		<!-- Header Back -->
+		<div class="header-back header-back-simple header-back-small">
+			<div class="header-back-container">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Page Info -->
+							<div class="page-info page-info-simple">
+								<h1 class="page-title">Installation</h1>
+								<h2 class="page-description">This page guides you on how to set Rush up on your machine!</h2>
+							</div>
+							<!-- End Page Info -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- End of Header Back -->
+<div id="content">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <!-- Steps Interactive -->
+            <div class="steps-interactive js-steps-interactive">
+               <h4 class="step-interactive-title">Install Rails</h4>
+               <div class="step-interactive-content">
+               <p>The first step to install Rush is to install another framework called Rails. If you are wondering, "Why the heck?", I will explain in a second. On the other hand, if you already have Ruby, Rails, Bundler and other such things installed on your computer, you can simply jump to the next step.</p>
+               <h3>What is Rails and why am I installing it?</h3>
+               <p>Rails is a very popular web development framework for making 'dynamic sites'. In fact, me (Khoj Badami) uses Rails all the time. Because a big part of what I do has got to do with making complex dynamic web applications. I wanted to bring many of the concepts and ideas from Rails to the making of static websites too. However, Rails is massive. It has 52 new concepts to learn before you get started. Hence I made Rush. My aim was that with the smallest number of new concepts to learn, one should be able to harness as much power as possible. So in many ways Rush is a subset of Rails.</p>
+               <h3>Nice Story. But why am I installing Rails?</h3>
+               <p>Well, Rush and Rails both depend on the Ruby Language. Now since Rails is super popular, a lot of people have written very nice updated guides about how to install Rails and Ruby and everything else thats needed on different machines and different configurations. Rush is just going to piggy back on all that good work. Once, you install Rails on your machine, then installing Rush does not take more than a minute.</p>
+               <h3>Okay, how should I install Rails?</h3>
+               <p>Well currently here are a few good sources:</p>
+               <ul>
+               	<li>
+<a href="http://guides.railsgirls.com/install">Setup recipe for Rails</a> - By RailsGirls</li>
+               	<li><a href="http://installrails.com/">Install Rails: A Step By Step Guide</a></li>
+               </ul>
+               </div>
+               <h4 class="step-interactive-title">Install Rush</h4>
+               <div class="step-interactive-content">
+               <p>If you have Rails, Ruby, Bundler and all that good stuff installed, then installing Rush should happen in under a minute. You just have to go into the terminal (on Mac &amp; Linux) OR command prompt (on Windows) and type in:</p>
+			   <div class="code-highlight " data-label="">
+				<span class="js-copy-to-clipboard copy-code">copy</span>
+				<pre><code class="language-javascript js-code">gem install rush</code></pre>
+				</div>
+			   <p>Thats pretty much it. Everything should go off successfully. Next lets see how to verify that Rush has been properly installed.</p>
+               </div>
+               <h4 class="step-interactive-title">Verify Your Installation</h4>
+               <div class="step-interactive-content">
+               <p>This part is simple too. All you have to do is go to your terminal (on Mac and Linux) or command prompt (on Windows) and type in:</p>
+			   <div class="code-highlight " data-label="">
+				<span class="js-copy-to-clipboard copy-code">copy</span>
+				<pre><code class="language-javascript js-code">rush -v</code></pre>
+				</div>
+			   <p>You should get a response that talks about the version of Rush that is installed on your computer.</p>
+			   <p>If you get a response that indicates that the your computer has no idea what 'rush' is, then something has not happened properly during the installation. You need to backtrack and figure out what went wrong. The part of the Rush installation with many moving parts is the part where you install Rails. Thankfully, there is a lot of help out there to help with this. So whatever problems you have should be solvable with some Googleing.</p>
+               </div>
+               <h4 class="step-interactive-title">Create Your First Project</h4>
+               <div class="step-interactive-content">
+               <p>Okay you are good to go! So lets get started. Go to a folder where you would like to create your first Rush project via the terminal or command prompt. Once you are there, type in:</p>
+			   <div class="code-highlight " data-label="">
+				<span class="js-copy-to-clipboard copy-code">copy</span>
+				<pre><code class="language-javascript js-code">rush new PROJECT_NAME</code></pre>
+				</div>
+				<p>Replace 'PROJECT_NAME' with the name of the project you want. As soon as you do this, you should get a happy message indicating that the project has been created and we are ready to get cracking. Next we can look at what has been made and why in the <a href="tutorial">tutorial.</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+		<!-- Footer -->
+		<footer class="js-footer-is-fixed">
+			<!-- Footer Default -->
+			<div class="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-sm-3 col-xs-12">
+							<div class="footer-logo-wrapper">
+								<!-- Logo Image -->
+								<a href="index" class="logo-image ">
+									<img src="../images/logos/logo.png" alt="logo">
+								</a>
+								<!-- End of Logo Image -->
+							</div>
+						</div>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<div class="footer-wrapper">
+								<!-- Scroll top -->
+								<span class="scroll-top js-scroll-top">
+									<i class="fa fa-angle-up"></i>
+								</span>
+								<!-- End of Scroll top -->
+								<!-- Version -->
+								<div class="docs-version js-docs-version">
+									<span class="docs-current-version js-docs-current-version">v0.1</span>
+									<ul class="js-docs-version-list">
+										<li>
+											<a href="#">0.1</a>
+										</li>
+									</ul>
+								</div>
+								<!-- End of Version -->
+								<!-- Copyright -->
+								<p class="copyright helper right">
+									Open source under the terms of the MIT License
+								</p>
+								<!-- End of Copyright -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End of Footer Default -->
+		</footer>
+		<!-- End of Footer -->
+	</div>
+	<script src="../js/application.js"></script>
+</body>
+
+</html>

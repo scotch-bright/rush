@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link rel="stylesheet" href="../css/application.css">
+	<script src="../js/modernizr.js"></script>
+</head>
+
+<body class="">
+	<!-- End of Preloader -->
+	<div class="page js-page ">
+		<!-- Header -->
+		<div class="header header-over large">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-xs-5">
+						<!-- Logo Image -->
+						<a href="index.html" class="logo-image logo-animated">
+							<img src="../images/logos/logo.png" alt="logo">
+						</a>
+						<!-- End of Logo Image -->
+					</div>
+					<div class="col-md-9 col-sm-6 col-xs-7">
+						<!-- Menu -->
+						<nav class="right helper">
+							<ul class="menu sf-menu js-menu">
+								<li>
+									<a href="index">Home
+									</a>
+								</li>
+								<li>
+									<a href="installation">Installation</a>
+								</li>
+								<li>
+									<a href="tutorial">Tutorial</a>
+								</li>
+								<li>
+									<a href="https://github.com/scotch-bright/rush/">GitHub</a>
+								</li>
+								<li>
+									<a href="how_it_works">How It Works?</a>
+								</li>
+								<li>
+									<a href="about">About</a>
+								</li>
+							</ul>
+						</nav>
+						<!-- End of Menu -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End of Header -->
+		<!-- Header Back -->
+		<div class="header-back header-back-simple header-back-small">
+			<div class="header-back-container">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Page Info -->
+							<div class="page-info page-info-simple">
+								<h1 class="page-title">Tutorial</h1>
+								<h2 class="page-description">How to use Rush and make static sites super fast!</h2>
+							</div>
+							<!-- End Page Info -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- End of Header Back -->
+<div id="content">
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <div class="main-content">
+            <!-- Table of content -->
+            <div class="table-of-contents">
+               <ol>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-intro">Introduction</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-create-new">Creating A New Rush Project</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-file-structure">Rush Project File Structure</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-start-server">Starting The Rush Server</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-live-reload">Disabling Live Reload</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-pages-and-layouts">Pages &amp; Layouts</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-different-layouts">Using More Than One Layout</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-partials">Using Partials</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-using-headers">Using Different Headers</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-using-css">Using 'application.css' instead of adding CSS files manually</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-using-js">Using 'application.js' instead of adding JS files manually</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-using-scss">Using SCSS instead of CSS</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-using-coffee">Using CoffeeScript instead of JavaScript</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-generating-static-site">Generating A Ready To Upload Static Site</a>
+                  </li>
+                  <li>
+                     <a href="#" class="js-scroll-to" data-target="#tutorial-using-erb">Using ERB (Advanced)</a>
+                  </li>
+               </ol>
+            </div>
+            <!-- End of Table of content -->
+
+            <div id="tutorial-intro">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Introduction</h4>
+               </div>
+               <!-- End of Caregory Info -->
+            </div>
+            <p>Hi my name is Khoj Badami. I am the guy who made the Rush framework. I am going to use this tutorial to share with you all the cool things the Rush framework can do for you. Before we begin, I am going to assume that you have installed the Rush framework on your computer. If not, you can go to the <a href="install">installation section</a> and get that done.</p>
+
+
+            <div id="tutorial-create-new">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Creating A New Rush Project</h4>
+               </div>
+               <!-- End of Caregory Info -->
+            </div>
+            <p>Creating a new rush project is simple. You have to open up the terminal (if your are on a Mac or Linux) and command prompt (if you are on Windows) and navigate to the folder where you would like to create your project. Once there, simply type in the following command.</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">rush new PROJECT_NAME</code></pre>
+            </div>
+            <p>Replace 'PROJECT_NAME' with the name of the project you want. Make sure that the project name you choose does not have any spaces in it. Or you might end up getting an error. For the purposes of this tutorial, you can explicitly type in something like</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">rush new first_rush_project</code></pre>
+            </div>
+            <p>As soon as you do this, you should get a happy message indicating that the project has been created and we are ready to get cracking. You can use your computers file explorer to see what has been created. A folder with same name as the PROJECT_NAME (in this case 'first_rush_project') will have popped into existence. In the next section, we can talk about the files that were created within this folder.</p>
+
+      
+
+            <div id="tutorial-file-structure">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Rush Project File Structure</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>Let us explore all the files that got created in the folder 'first_rush_project'. Read though the little descriptions given next to the folder name to get a sense of what goes where. Things might be a little fuzzy right now, but it will all make sense soon.</p>
+            <!-- File Tree -->
+            <div class="file-tree">
+                     <div class="file-tree-title"> Rush Project Folder
+                     </div>
+                     <ul class="file-tree-list js-file-tree" data-expanded="">
+                        <li class="is-folder">css -
+                           <span class="file-tree-description">Put all your CSS files here. Drop SCSS files in too. Rush will auto convert the SCSS to CSS on the fly. (More on this later)</span>
+                        </li>
+                        <li class="is-folder">js -
+                           <span class="file-tree-description">Put all your JS files here. Drop CofffeeScript files in too. Rush will auto convert the CoffeeScript to JS on the fly. (More on this later)</span>
+                        </li>
+                        <li class="is-folder">fonts -
+                           <span class="file-tree-description">Put all your fonts in here. '.woff', '.ttf' etc.</span>
+                        </li>
+                        <li class="is-folder">headers -
+                           <span class="file-tree-description">Place header HTML chunks in files here. When Rush serves a page, it will pull out the correct HTML chunk and at it into the page. (More this later)</span>
+                        </li>
+                        <li class="is-folder">images -
+                           <span class="file-tree-description">Place all your images in here.</span>
+                        </li>
+                        <li class="is-folder">layouts -
+                           <span class="file-tree-description">Place your HTML layouts here. Layouts are basically the HTML shell of your page that will be shared by multiple pages. (More on this later)</span>
+                        </li>
+                        <li class="is-folder">pages -
+                           <span class="file-tree-description">Place your actual HTML content for the different pages here. For every HTML file you create here there will be a new page on your website. (More on this later)</span>
+                        </li>
+                        <li class="is-folder">partials -
+                           <span class="file-tree-description">Place chunks of HTML that you want to keep common across multiple pages here. You can re-use these chunks anywhere you see fit. (More on this later)</span>
+                        </li>
+                        <li class="is-folder">static_files -
+                           <span class="file-tree-description">Drop any other static files you may want in here. Like PDFs or MP3s.</span>
+                        </li>
+                        <li class="is-folder">data -
+                           <span class="file-tree-description">The data folder allows you to hold JSON files with static data. (This is a more advanced use of Rush but can be very powerful if you know a little Ruby. More on this later)</span>
+                        </li>
+                        <li class="is-file">rush_config.rb -
+                           <span class="file-tree-description">You usually do not have to worry about this file. But, there are some benefits of messing around. (More on this later)</span>
+                        </li>
+                     </ul>
+                  </div>
+                  <!-- End of FIle Tree -->
+            <p>The sample app that Rush creates when you make a new project tries to use all the Rush features as a demonstration. So you might find some benefit in poking around the files to see whats in them. Don't change anything just yet however. We will do that anyways in this tutorial.</p>
+
+
+            <div id="tutorial-start-server">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Starting The Rush Server</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <h4>What is the Rush server and why do I need to start it?</h4>
+            <p>Basically, the Rush server does all the magic. It takes your layout files from the 'layouts' folder and merges it with the 'pages' folder and creates the HTML page that your browser sees. It takes the Coffscript and converts it into JS. It takes all the different JS files you put in the 'js' folder and merges it into one file. Basically, everything thats good about the Rush framework comes from the Rush server.</p>
+            <p>To start the Rush server all you need to do is from your terminal or command prompt, just go into the directory with your rush app and run the following command.</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">rush start</code></pre>
+            </div>
+            <p>If everything is properly installed, you should see some lines that indicate that the rush server has started up on localhost port 1500. This means that you can go into your browser and type in:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">http://localhost:1500</code></pre>
+            </div>
+            <p>And with that you should see the default Rush app that gets created.</p>
+            <div class="helper center">
+               <img src="../images/tutorial/rush_app_launch_screenshot.png" class="image isolated">
+            </div>
+            <p>What you are seeing in your browser is the started Rush website. It has only one single page the homepage. But as we go though this tutorial we will add more pages.</p>
+
+
+            <div id="tutorial-live-reload">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Disabling Live Reload (If You Wanna)</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>If you stare at the page thats loaded in your bowser long enough and scroll up and down, you might see it 'stutter' or 'jump around'. This is happening because of Rush's live reload feature. Basically, there is a little script in the 'js' folder. All this script does it reloads the page every 10 seconds. The idea is that you work on your HTML and come back to your browser and the changes that you are working on are reflected. (As I am writing this, I am enjoying how every time I switch to my browser, everything I have written is already there.) However, it could get annoying. Let us assume that you are annoyed and prefer to go to the browser and hit refresh your self. In this case you can temporarily or permanently turn off live reload. Also, in doing so, you will get to see some of Rush's JavaScript related features.</p>
+            <p>In the project that was made, navigate over to the following file:</p>
+            <!-- File Tree -->
+            <div class="file-tree">
+                     <div class="file-tree-title" data-expanded="true"> JavaScript Folder
+                     </div>
+                     <ul class="file-tree-list js-file-tree" data-expanded="true">
+                        <li class="is-folder">js -
+                           <span class="file-tree-description">The folder with all the JS &amp; CoffeeScript files</span>
+                           <ul>
+                              <li class="is-file">1_rush_live_reload_dont_rename.coffee -
+                                 <span class="file-tree-description">The CoffeeScript file that does the live reload</span>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+               </div>
+               <!-- End of FIle Tree -->
+            <p>This file '1_rush_live_reload_dont_rename.coffee' does all the live reload stuff. Notice that the file is NOT a JS file. It is a CoffeeScript file. So Rush is taking the CoffeeScript file and converting it into a JS file in real time. Let us poke around with this file and see all this in action.</p>
+            <h4>What is CoffeeScript anyways?</h4>
+            <p>Let me simply pick up a quote from the <a href="http://coffeescript.org/">CoffeeScript website</a>.</p>
+
+            <div class="note js-note purple">
+                  <h4 class="note-title">From The CoffeeScript Website</h4>
+                  <p class="note-description">CoffeeScript is a little language that compiles into JavaScript. Underneath that awkward Java-esque patina, JavaScript has always had a gorgeous heart. CoffeeScript is an attempt to expose the good parts of JavaScript in a simple way. The golden rule of CoffeeScript is: "It's just JavaScript". The code compiles one-to-one into the equivalent JS, and there is no interpretation at runtime.</p>
+               </div>
+
+            <p>If you open up the file in a text editor, you will see the following:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+# This is a little script that will refresh the contents on your page every 5 seconds. 
+# This helps you to make changes and see them in the browser instantly. Just a little 
+# convenience baked into the Rush framework. This will be automatically removed when
+# your site is being made ready for production. DO NOT place any JS here and DO NOT
+# change the name of this file and everything will go well.
+
+if true
+  window.onload = -&gt;
+    setInterval (-&gt;
+      location.reload()
+      return
+    ), 10000
+    return
+            </code></pre>            
+            </div>
+            <p>Okay so as you see above there is some CoffeeScript code. (It sort of looks like JavaScript but without brackets at first glance.) Lets look at what Rush does with this CoffeeScript and how it converts it to JavasScript in real time. If you go to your browser where you see the Rush starting page loaded up and get into your browsers "View Page Source" mode you should be able to see the pages HTML. Right at the bottom, you will see:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">&lt;script src="../js/application.js"&gt;&lt;/script&gt;</code></pre>
+            <p>This should strike you as odd. For some reason, the page is calling for a JavaScript file called 'application.js'. However, as we saw above, the JS folder does not have a file called 'application.js'. But, despite that, the page is still doing the live reload every 10 seconds. Okay lets see what happens if we point our browser to:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">http://localhost:1500/js/application.js</code></pre>
+            <p>If you load up the URL in the browser, you should see:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+(function() {
+  if (true) {
+    window.onload = function() {
+      setInterval((function() {
+        location.reload();
+      }), 10000);
+    };
+  }
+
+}).call(this);
+            </code></pre>
+            </div>
+            <p>Hey, look at that, it's the above CoffeeScript code converted into JavaScript with all the brackets and all. Also the comment above the CoffeeScript has been stripped out.</p> 
+            <h4>So what is 'application.js' and what is the magic it has been doing?</h4>         
+            <p>Now the stage is set to discuss some of the JS related features of Rush. Basically, if you call for 'application.js' via a script tag in your HTML, Rush will take all the JS &amp; Coffee files in the 'js' folder and combine them. If they are CoffeeScript files, they will be converted to JavaScript. The final combination result will be returned to the browser. You should NOT create your own file called 'application.js'. That file will be ignored. But, if you want to add a new JS library to your project, just drop it into the the JS folder and your call to 'application.js' will take care of the rest.</p>
+            <h4>Okay, so how do you turn off live reload?</h4>
+            <p>Well thats easy. Just go to the file '1_rush_live_reload_dont_rename.coffee' in the js folder and change the 'if true' to 'if false'. Thats it. If you are sure you really don't care about live reload, simply delete the file.</p>
+            <p>After you make the change, do checkout the 'application.js' URL again the browser and you will see the Coffee converted to JS and updated in the browser.</p>
+            <p>We will cover some more points about the JS features of Rush in the JavaScript related section.</p>
+
+
+
+            <div id="tutorial-pages-and-layouts">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Pages &amp; Layouts</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>Web pages usually have many different sections. Some parts, like the header and the footer may be common to each and every page on the website. Some parts like the side menu may be common to to a few pages. There is usually one section that is unique to a particular page: the page content. Below it a pictorial representation of the same idea.</p>
+            <div class="helper center">
+               <img src="../images/tutorial/pages.png" class="image isolated">
+            </div>
+            <p>One of the core goals that the Rush framework has is to help you stay DRY.</p>
+            <h4>What is DRY?</h4>
+            <p>DRY is an acronym for "Don't Repeat Yourself!". In programming, if your code is not DRY, you are doing it wrong. In font-end website design, we have chunks of HTML that are common to multiple pages. This means that we need to copy and paste them from one page to another and have to repeat our-selves in one form or the other. Rush helps you avoid all of this non-sense. With Rush, you will write HTML once and re-use it wherever you need to. To achieve this, Rush has many tools like 'layouts', 'pages' and 'partials'. In this section, we will go though the use of 'pages' and 'layouts'.</p>
+            <p>The 'layouts' folder in your Rush application holds the layout files. These files are just basic HTML files which hold the structure of your page that is usually common to many different pages on your website. They just have some spacial text here and there. We shall look at this special text in detail and find out what it does. To get started lets have a look at the text inside the 'layouts' folder. Here there seems to be file called 'application.html' in your 'layouts' folder. This 'application.html' file is your default layout. If Rush does not know what layout to use, it goes for this one. We will see how you can explicitly tell Rush which layout to use soon. But first, lets have a look at the contents of this layout file.</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;%= render_header %&gt;
+    &lt;link rel="stylesheet" href="../css/application.css"&gt;
+&lt;/head&gt;
+&lt;body class="no-js"&gt;
+    &lt;div class="main"&gt;
+        &lt;%= render_partial 'page_head' %&gt;
+        &lt;%= render_page %&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+        &lt;div class="wrap"&gt;
+            &lt;p&gt;Made with &amp;#10084; in Pune, India By Khoj Badami&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+    &lt;script src="../js/application.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+            </div>
+            <p>As you can see, most of this code looks like normal HTML. But there are a few funny bits. In this section we will look at one of these funny bits.</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">&lt;%= render_page %&gt;</code></pre>
+            </div>
+            <p>The syntax you are seeing here is called ERB. It's an acronym that stands for Embedded Ruby. When ever we need to do something special in the HTML files, we need to surround it with '&lt;%=' and '%&gt;'. These are kind of like opening and closing tags of HTML. But in this case, it's not HTML it's ERB. Now, inside the opening and closing brackets, you see 'render_page'. This tells Rush that you want to place the actual contents of the page at that spot.</p>
+            <p>So, the next question is what should Rush put where it sees 'render_page'? Where should Rush find the actual page content from? Well in case you guessed 'the pages folder', you would be right! Lets have a look at whats inside the 'pages' folder.</p>
+<!-- File Tree -->
+            <div class="file-tree">
+                     <div class="file-tree-title" data-expanded="true"> Pages Folder
+                     </div>
+                     <ul class="file-tree-list js-file-tree" data-expanded="true">
+                        <li class="is-folder">pages -
+                           <span class="file-tree-description">The folder with all the content that goes in wherever 'render_page' is selected</span>
+                           <ul>
+                              <li class="is-file">index.html -
+                                 <span class="file-tree-description">This is the default page. It will show up if the user goes to http://localhost:1500/ and does not ask for any particular page.</span>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+               </div>
+               <!-- End of FIle Tree -->
+               <p>The 'index.html' file is the default page. If we look inside it we see some HTML. It seems to be the actual HTML body of the page. To fully understand what is going on, point your browser to 'http://localhost:1500' (the Rush server should still be running) and look at the source of the page in the browser with 'View Source'. What you will see is that Rush is taking the layout HTML from application.html and where the 'rednder_page' call is there on the page, it is replacing that with the HTML of the file 'index.html'</p>
+               <h4>So how should one create more pages on the website?</h4>
+               <p>Simple just create a new HTML file and place it in the 'pages' folder. Lets do that here. Lets create a new HTML file called 'test.html' and place it in the 'pages' folder. Let us put something simple into it like:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">&lt;h1&gt;My First Rush Page! Yay!&lt;/h1&gt;</code></pre>
+            </div>
+            <p>With that done, if you save your new HTML file and then point your browser to 'http://localhost:1500/test' you should see the same layout being used but the 'render_page' once again being replaced with your happy new H1.</p>
+               <div class="note js-note blue">
+                     <h4 class="note-title"> Note </h4>
+                     <p class="note-description"> The point here is as explained right in the beginning of the section. The headers, footers and maybe some menus are common to many different pages. So, write them once in a layout file. From the layout file call 'render_page' which will bring in the content from the 'pages' folder that is actually unique. The effect is, you don't end up repeating yourself.  </p>
+                  </div>
+               <p>However, at this point you might be wondering, what if I have different layouts? How would I deal with that? Well thats what the next section is all about.</p>
+
+
+
+
+
+            <div id="tutorial-different-layouts">
+               <!-- Category Info -->
+               <div class="category-info">
+                  <h4 class="category-description">Using More Than One Layout</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>Let us assume that the situation you are in is: Half the pages on your website have a standard layout. But half the pages have something completely different as the layout. This situation is also easy to handle with Rush.</p>
+            <p>The first thing to do is create the second layout. Let us go ahead and create a new layout file in the layouts folder called 'layout_2.html'. You can call this file whatever you want of course. Just don't put spaces in the file name and let the file extension be '.html'. Lets fill up the file with the following:</p>
+<div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="../css/application.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+   &lt;h1&gt;This is My Second Layout!&lt;/h1&gt;
+   &lt;%= render_page %&gt;
+   &lt;script src="../js/application.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+            </div>
+            <p>As you can see this layout is dead simple. It mainly has a H1 tag with a line that indicates that this layout is different from the other layout. Under the H1, there is a call to 'render_page'. So, that is where our page will go.</p>
+            <p>Now we have to use this layout. So, lets do that by editing the new 'test.html' page we made in the last section. All we have to do is, open up the 'test.html' file and add a HTML comment in the very first line like so:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;!-- layout:layout_2 --&gt;
+&lt;h1&gt;My First Rush Page! Yay!&lt;/h1&gt;</code></pre>
+            </div>
+            <p>The first line '&lt;!-- layout:layout_2 --&gt;' is an HTML comment. When Rush sees this in the first line of your HTML file, it understands that you are asking for a different layout here. It looks for a file called 'layout_2.html' in your layouts folder and then uses that as the layout. It's that simple. Just make sure that this comment is the first line!</p>
+
+
+
+            <div id="tutorial-partials">
+               <!-- Category Info -->
+               <div class="category-info">
+                  <h4 class="category-description">Using Partials</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <div class="helper center">
+               <img src="../images/tutorial/pages.png" class="image isolated">
+            </div>
+            <p>As we saw in this image earlier, there are parts of a HTML page that are common to a few, but maybe not all HTML pages. The side menu in the above layout maybe a good example. Again Rush has a solution here and helps you to stay DRY (not repeat your self with copy pasting code). Here you can use 'partials'.</p>
+            <h4>What are partials?</h4>
+            <p>Basically, chunks of HTML that are common to multiple pages. Rush allows you to take chunks like that and simply put them in a HTML file in the 'partials' folder and call that chunk whenever you want. The 'application.html' layout file that you saw earlier is using a partial called 'page_head'. Lets have a look at the 'application.html' file again. 
+            </p>
+<div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;%= render_header %&gt;
+    &lt;link rel="stylesheet" href="../css/application.css"&gt;
+&lt;/head&gt;
+&lt;body class="no-js"&gt;
+    &lt;div class="main"&gt;
+        &lt;%= render_partial 'page_head' %&gt;
+        &lt;%= render_page %&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+        &lt;div class="wrap"&gt;
+            &lt;p&gt;Made with &amp;#10084; in Pune, India By Khoj Badami&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+    &lt;script src="../js/application.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+            </div>
+            <p>You can see that there is a call to:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;%= render_partial 'page_head' %&gt;</code></pre>
+            </div>
+
+            <p>That is how you call for a partial to be inserted into your page.</p>
+
+            <p>If you explore the partials folder in the Rush directory, you should see the file called 'page_head.html'. Inside the file you can see the following code:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;header&gt;
+   &lt;div class="wrap"&gt;
+       &lt;div class="header-wrapper"&gt;
+           &lt;h1&gt;Welcome To &lt;span&gt;Rush&lt;/span&gt;&lt;/h1&gt;
+           &lt;p&gt;&lt;%= data.sample.page_header_text %&gt;&lt;/p&gt;
+           &lt;p class="autor"&gt;&lt;a href="#"&gt;Khoj Badami&lt;/a&gt;&lt;/p&gt;
+       &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/header&gt;
+</code></pre>
+            </div>
+            <p>As you can see, it is just a chunk of HTML. The contents of the file do not matter. And you may see some bits that seem odd right now, but I don't want to focus on that. For now, I just want you to know, that you can simply add a partial to a layout or a page file by calling:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;%= render_partial 'THE_FILE_NAME_IN_THE_PARTIALS_FOLDER_WITHOUT_THE_.html' %&gt;</code></pre>
+            </div>
+            <h4>What if you have a chunk of HTML that changes very slightly, but largely remains the same?</h4>
+            <p>If you look at the top of this page, you will see the header:</p>
+            <div class="helper center">
+               <img src="../images/tutorial/header_1.png" class="image isolated">
+            </div>
+            <p>Now if you go over to the tutorials page, you will also be able to see a similar header:</p>
+            <div class="helper center">
+               <img src="../images/tutorial/header_2.png" class="image isolated">
+            </div>
+            <p>Both of the headers are clearly the same general HTML. But, the text in the heading and sub-heading are a little different. In this case too, partials can be used in a special way. Let me first share with you how I have used the partial and then explain the code.</p>
+
+<div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;%= render_partial 'content_header', title: "Tutorial", sub_title: "How to use Rush and make static sites super fast!" %&gt;</code></pre>
+            </div>
+            <p>As you can see it is just a simple call to 'render_patial' as we saw above. Nothing different. But its followed by some other stuff like the text that should make up the 'title' and the text that should make up the 'sub_title' and everything is separated by a comma. Now once you call the partial with this additional information, using the text in the actual partials HTML is pretty straightforward. Let me share with you the partial used in this site. Its a file called 'content_header.html' in the partials folder as you would expect.</p>
+<div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+      &lt;div class="header-back header-back-simple header-back-small"&gt;
+         &lt;div class="header-back-container"&gt;
+            &lt;div class="container"&gt;
+               &lt;div class="row"&gt;
+                  &lt;div class="col-md-12"&gt;
+                     &lt;!-- Page Info --&gt;
+                     &lt;div class="page-info page-info-simple"&gt;
+                        &lt;h1 class="page-title"&gt;&lt;%= title %&gt;&lt;/h1&gt;
+                        &lt;h2 class="page-description"&gt;&lt;%= sub_title %&gt;&lt;/h2&gt;
+                     &lt;/div&gt;
+                     &lt;!-- End Page Info --&gt;
+                  &lt;/div&gt;
+               &lt;/div&gt;
+            &lt;/div&gt;
+         &lt;/div&gt;
+      &lt;/div&gt;
+</code></pre>
+</div>
+        <p>There is a lot of Bootstrap junk all over the place in the above HTML block. But, I don't want you to get distracted with that. Just focus on the two lines:</p>
+<div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+            &lt;h1 class="page-title"&gt;&lt;%= title %&gt;&lt;/h1&gt;
+            &lt;h2 class="page-description"&gt;&lt;%= sub_title %&gt;&lt;/h2&gt;
+</code></pre>
+</div>
+         <p>As you can see in the ERB opening and closing brackets ( ' and ' ) there are the same words we used when we were calling our partial: 'title' and 'sub_title'. Thats it. You can simply use the same words inside the partial and everything will just work! Just make sure that you follow the format correctly when calling the partial from the page or layout. The words you use like 'title' and 'sub_title': Let them be lower case and have no spaces in them.</p>
+         
+
+
+            <div id="tutorial-using-headers">
+               <!-- Category Info -->
+               <div class="category-info">
+                  <h4 class="category-description">Using Different Headers</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>If you want to get everything right in terms of SEO and being ready for social media then you need to work on putting the right things in the title, description, keywords parts of the HTML head section. Besides this, if you want the page to be shared on FaceBook with the proper image, title and description, you might want to customize the head section of each page with all sorts of 'og:' tags. Rush makes this very easy to do.</p>
+            <p>There are 2 things you need to do to customize the header section of the page easily:</p>
+            <h4>Step 1</h4>
+            <p>You have to make a call to 'render_header' from your layout file. That is pretty simple to do. Lets look at the 'application.html' from the layouts folder and see how it calls 'render_head' in the head section of the HTML.</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;%= render_header %&gt;
+    &lt;link rel="stylesheet" href="../css/application.css"&gt;
+&lt;/head&gt;
+&lt;body class="no-js"&gt;
+    &lt;div class="main"&gt;
+        &lt;%= render_partial 'page_head' %&gt;
+        &lt;%= render_page %&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+        &lt;div class="wrap"&gt;
+            &lt;p&gt;Made with &amp;#10084; in Pune, India By Khoj Badami&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+    &lt;script src="../js/application.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+            </div>
+            <h4>Step 2</h4>
+            <p>Now, if we create a HTML file in the 'headers' folder of the Rush project, if will automatically bring that header when the page is requested. If you go into the headers folder now, you should see a file called 'index.html'. This is called and used as the header when you are visiting the homepage of the website. Above we created a page called 'test.html'. To have a different header for that page, just create another file called 'test.html' in the headers folder. Rush will take care of the rest.</p>
+
+
+            <div id="tutorial-using-css">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Using 'application.css' instead of adding CSS files manually</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>Rush makes it very easy to work with CSS files. You can keep your CSS files separate and organize their contents in any way you want. You can import CSS files from a wide variety of CSS libraries without any discomfort whatsoever. To understand how Rush helps with this, let us once again look at the 'application.html' file in the layouts folder:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;%= render_header %&gt;
+    &lt;link rel="stylesheet" href="../css/application.css"&gt;
+&lt;/head&gt;
+&lt;body class="no-js"&gt;
+    &lt;div class="main"&gt;
+        &lt;%= render_partial 'page_head' %&gt;
+        &lt;%= render_page %&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;
+        &lt;div class="wrap"&gt;
+            &lt;p&gt;Made with &amp;#10084; in Pune, India By Khoj Badami&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+    &lt;script src="../js/application.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+            </div>
+            <p>You see can see that in the HEAD section there is an external style sheet that is requested. This style sheet has the name 'application.css' and you can guess that it should be in the 'css' folder. But the funny thing is, IT IS NOT!</p>
+            <p>Yet, with the rush server running, if you point your browser to 'http://localhost:1500/css/application.css', you will find that the browser responds with some CSS. All of this is Rush at work, trying to make your life simple.</p>
+            <p>You see, 'application.css' is a special file. You can just call for it in your layout as we have done above. You DO NOT and SHOULD NOT create a file called 'application.css' in your CSS folder. What Rush does is that when it sees that you are asking for the file '../css/application.css', it automatically will take all the contents from all the CSS files in the CSS folder and combine them together and put them in application.css</p>
+            <h4>In what order do the files get combined?</h4>
+            <p>In alphabetical order. The file 'a_css_file.css' will be taken first. After that the file 'bloddy_good_css.css' will be taken. You need to remember this point. All you have to do is create a new file and drop it into the CSS folder. Rush will take care of the rest. Nice and easy!</p>
+            <p>You can test this out by creating a new CSS file and dropping it into the 'css' folder of your newly created Rush app. Name the file 'awesome_styles.css' and the matter inside it will be above the contents of 'style.css'</p>
+
+
+
+            <div id="tutorial-using-js">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Using 'application.js' instead of adding JS files manually</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>Everything you read above about application.css is also true for application.js. The only difference being application.css is about CSS files in the 'css' folder and 'application.js' is about JS files in the 'js' folder.</p>
+            <p>If you have not read the above section on application.css, do read it.</p>
+            <div class="note js-note blue">
+                     <h4 class="note-title"> Note </h4>
+                     <p class="note-description"> CSS files are usually not very fussy about the order in which they are included. However, JS files are. For Example: You can do cool things in the 'document ready' block of JQuery without first telling the browser what the deal with the '$' is. That means, that you need to include the JQuery library before you can use it. Now since, JS files are automatically included into the special 'application.js' file, you need to make sure that you name the files properly. Make sure that the files are name in such a way that if they are sorted in alphabetical order based on file name, and everything is loaded, things will work properly. You can use file names like '1_jquery.min.js' and '2_my_script.js' just to be safe and explicit.  </p>
+                  </div>
+
+
+            <div id="tutorial-using-scss">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Using SCSS instead of CSS</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>Besides the fact that you can just simply place CSS files into the 'css' folder and they will automatically become part of the the 'application.css' file, you can also place ".scss" files into the 'css' folder. You do not have to do anything special. Just simply call 'application.css'. The ".scss" file will be converted to ".css" and added to your other CSS files.</p>
+            <p>Besides this, you can also call the SCSS files from the HTML like so..</p>
+
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;link rel="stylesheet" href="../css/my_styles.scss"&gt;</code></pre>
+            </div>
+            <p>Here also the '.scss' file will be converted into CSS and then returned to the browser. You do not have to do a thing!</p>
+            <div class="note js-note blue">
+                     <h4 class="note-title"> Note </h4>
+                     <p class="note-description"> Even though you can call for individual '.scss' and '.css' files like this, it is not recommended. Using 'application.css' and 'application.js' is the better approach. </p>
+                  </div>
+
+
+               <div id="tutorial-using-coffee">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Using CoffeeScript instead of JavaScript</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>Just like you can simply use SCSS by dropping the SCSS file in the 'css' folder and letting Rush take care of the rest, you can do the same for CoffeeScript. Simply drop a '.coffee' file into the '.js' folder and it will be auto converted to JS and served via the call to 'application.js'. In fact, just for demo purposes, the 'js' folder comes with a '.coffee' file when you create a new Rush project. You can have a look at it in the 'js' folder and you can point your browser to 'http://localhost:1500/js/application.js' to see how it is being auto converted into JS and sent to the browser.</p>
+<p>Besides this, you can also call the SCSS files from the HTML like so..</p>
+
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+&lt;script src="../js/my_awesome_coffee_script.coffee"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            <p>Here also the '.coffee' file will be converted into JS and then returned to the browser. You do not have to do a thing!</p>
+            <div class="note js-note blue">
+                     <h4 class="note-title"> Note </h4>
+                     <p class="note-description"> Even though you can call for individual '.coffee' and '.js' files like this, it is not recommended. Using 'application.js' and 'application.css' is the better approach. </p>
+                  </div>
+
+
+            <div id="tutorial-generating-static-site">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Generating A Ready To Upload Static Site</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>Once your website is ready, making a static site is easy. It is just a matter of running a single command on the command line / terminal. Open up your the command prompt / terminal and navigate to the directory where your Rush project is. Once there simply type in the following command:</p>
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">rush make</code></pre>
+            </div>
+            <p>Thats it. After a little bit of ceremony, the project will be ready for you to look at in a folder called '{YOUR-CURRENT-FOLDER-NAME}_static'. Rush tells you the exact path where you can find the folder. It will be in the same directory as the project folder. You can jump and and have a look at everything that has been made. You will see all the files and folders that have been generated. All the SCSS &amp; CoffeeScript has been converted to CSS &amp; JS. The site is now ready to upload as a plain and simple static site. No Rush framework required any more.</p>
+
+
+         </div>
+      </div>
+   </div>
+</div>
+
+
+		<!-- Footer -->
+		<footer class="js-footer-is-fixed">
+			<!-- Footer Default -->
+			<div class="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-sm-3 col-xs-12">
+							<div class="footer-logo-wrapper">
+								<!-- Logo Image -->
+								<a href="index" class="logo-image ">
+									<img src="../images/logos/logo.png" alt="logo">
+								</a>
+								<!-- End of Logo Image -->
+							</div>
+						</div>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<div class="footer-wrapper">
+								<!-- Scroll top -->
+								<span class="scroll-top js-scroll-top">
+									<i class="fa fa-angle-up"></i>
+								</span>
+								<!-- End of Scroll top -->
+								<!-- Version -->
+								<div class="docs-version js-docs-version">
+									<span class="docs-current-version js-docs-current-version">v0.1</span>
+									<ul class="js-docs-version-list">
+										<li>
+											<a href="#">0.1</a>
+										</li>
+									</ul>
+								</div>
+								<!-- End of Version -->
+								<!-- Copyright -->
+								<p class="copyright helper right">
+									Open source under the terms of the MIT License
+								</p>
+								<!-- End of Copyright -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End of Footer Default -->
+		</footer>
+		<!-- End of Footer -->
+	</div>
+	<script src="../js/application.js"></script>
+</div>
+</div>
+</div>
+</body>
+
+</html>
