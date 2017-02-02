@@ -151,6 +151,16 @@ describe Rush::StaticMaker do
 
             end
 
+            context "there is another file called 'third_page.html' which links back to 'index.html' and 'welcome.html'" do
+            
+              it "makes the links that simply have 'index' in them, '../index.html' and files with just one other page referenced via a reltive link, start with '../'" do
+                the_html_file_that_was_found = File.read File.join made_project_path, "third_page", "index.html"
+                the_html_file_that_should_be_there = File.read File.join solution_project_path, "third_page", "index.html"
+                the_html_file_that_was_found.should == the_html_file_that_should_be_there
+              end
+
+            end
+
           end
 
         end

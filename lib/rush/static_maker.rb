@@ -24,6 +24,7 @@ module Rush
       make_css_files
       make_js_folder
       make_js_files
+      make_array_of_html_file_names
       make_html_files
       copy_static_files_folders
     end
@@ -46,6 +47,10 @@ module Rush
       end
     end
 
+    def make_array_of_html_file_names
+      @html_file_names_array = Rush::FileFetcher.array_of_file_paths(@app.config.pages_folder).map { |e| Rush::FileFetcher.get_file_name_from_path(e) }
+    end
+
     def get_html_content path
       content = @app.page_maker.get_page(path)[:html]
       content = chnage_scss_extenstions_to_css_extenstions_in_html content
@@ -53,6 +58,15 @@ module Rush
       if path != "index"
         #Making all the refrences in the inner files go one level up
         content = content.gsub(/('|")(static_files|js|css|images|fonts)\//, '\1../\2/')
+        # Making all the links to the other pages work
+        (@html_file_names_array - ["index"]).each do |page_name|
+          content = content.gsub /href\W*=\W*('|")#{page_name}/i, "href=\\1../#{page_name}"
+        end
+
+        # Chnage the refrences to index to point to the homepage
+        content = content.gsub /href\W*=\W*('|")index/i, "href=\\1../index.html"
+
+        return content
       else
         content
       end
