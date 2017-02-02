@@ -17,7 +17,7 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-6 col-xs-5">
 						<!-- Logo Image -->
-						<a href="index.html" class="logo-image logo-animated">
+						<a href="../index.html.html" class="logo-image logo-animated">
 							<img src="../images/logos/logo.png" alt="logo">
 						</a>
 						<!-- End of Logo Image -->
@@ -27,20 +27,20 @@
 						<nav class="right helper">
 							<ul class="menu sf-menu js-menu">
 								<li>
-									<a href="index">Home
+									<a href="../index.html">Home
 									</a>
 								</li>
 								<li>
-									<a href="installation">Installation</a>
+									<a href="../installation">Installation</a>
 								</li>
 								<li>
-									<a href="tutorial">Tutorial</a>
+									<a href="../tutorial">Tutorial</a>
 								</li>
 								<li>
 									<a href="https://github.com/scotch-bright/rush/">GitHub</a>
 								</li>
 								<li>
-									<a href="how_it_works">How It Works?</a>
+									<a href="../how_it_works">How It Works?</a>
 								</li>
 								<li>
 									<a href="about">About</a>
@@ -713,6 +713,80 @@ if true
             <p>Thats it. After a little bit of ceremony, the project will be ready for you to look at in a folder called '{YOUR-CURRENT-FOLDER-NAME}_static'. Rush tells you the exact path where you can find the folder. It will be in the same directory as the project folder. You can jump and and have a look at everything that has been made. You will see all the files and folders that have been generated. All the SCSS &amp; CoffeeScript has been converted to CSS &amp; JS. The site is now ready to upload as a plain and simple static site. No Rush framework required any more.</p>
 
 
+
+            <div id="tutorial-using-erb">
+               <!-- Category Info -->
+               <div class="category-info ">
+                  <h4 class="category-description">Using ERB (Advanced)</h4>
+               </div>
+               <!-- End of Category Info -->
+            </div>
+            <p>If have come to Rush with some knowledge of the Rails framework you will already know all about ERB. All the cool things you can do with ERB is a big subject in and of itself. But to fully appreciate what is going on, you would need to know Ruby. And that is a HUGE subject. (Because ERB stands for 'Embedded Ruby') So, it is a little pointless to go into all of that here. But, in case you are coming from another Ruby framework and know what ERB is all about, you simply need to know you can use ERB in the views partials and layouts!</p>
+            <p>In Rails, you usually are dealing with data from a data source like a Database. In Rush too, you can store data and have access to it via ERB in your views, partials and layouts. The data store in Rush however, are static JSON files. These static JSON files are stored in a 'data' folder. Let us look again at the sample Rush app that got made when you started this tutorial. If yo look though the folders, you will see a 'data' folder.</p>
+<!-- File Tree -->
+            <div class="file-tree">
+                     <div class="file-tree-title" data-expanded="true"> Data Folder
+                     </div>
+                     <ul class="file-tree-list js-file-tree" data-expanded="true">
+                        <li class="is-folder">data -
+                           <span class="file-tree-description">This is where you can store static data in JSON format.</span>
+                           <ul>
+                              <li class="is-file">sample.json -
+                                 <span class="file-tree-description">A sample JSON file that comes with a new Rush project</span>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+               </div>
+               <!-- End of FIle Tree -->
+               <p>If you have a look at the contents of the Rush sample.json file in the data folder, you will see the following simple JSON object with one attribute in it:</p>
+
+            <div class="code-highlight " data-label="">
+            <span class="js-copy-to-clipboard copy-code">copy</span>
+            <pre><code class="language-javascript js-code">
+{
+   "page_header_text": "Rush is a DRY, fast and efficient way to make static websites. My aim was to make a tool that allows you to focus on making something beautiful. Rush will take care of the 'little details'. I hope you enjoy using it."
+}
+</code></pre>
+            </div>
+            <p>Next let me show you how you can access this data in your views. To see how it is used, we need to look at the source of the file called 'page_head.html' which is in the 'partials' folder.</p>
+            <!-- File Tree -->
+            <div class="file-tree">
+                     <div class="file-tree-title" data-expanded="true"> Partials Folder
+                     </div>
+                     <ul class="file-tree-list js-file-tree" data-expanded="true">
+                        <li class="is-folder">partials -
+                           <span class="file-tree-description">The folder that contains all the partials.</span>
+                           <ul>
+                              <li class="is-file">page_head.html -
+                                 <span class="file-tree-description">A partial file that uses the data from the sample.json file.</span>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+               </div>
+               <!-- End of FIle Tree -->
+               <p>We need to look at the contents of this file to see how the data from the sample.json file can be used in the views.</p>
+<div class="code-highlight " data-label="">
+<span class="js-copy-to-clipboard copy-code">copy</span>
+<pre><code class="language-javascript js-code">
+           &lt;header&gt;
+            &lt;div class="wrap"&gt;
+                &lt;div class="header-wrapper"&gt;
+                    &lt;h1&gt;Welcome To &lt;span&gt;Rush&lt;/span&gt;&lt;/h1&gt;
+                    &lt;p&gt;&lt;%= data.sample.page_header_text %&gt;&lt;/p&gt;
+                    &lt;p class="autor"&gt;&lt;a href="#"&gt;Khoj Badami&lt;/a&gt;&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+</code></pre>
+</div>               
+         <p>As you can see, there is a line <b>&lt;p&gt;&lt;%= data.sample.page_header_text %&gt;&lt;/p&gt;</b>. This is the line that pulls out the data from the data folder. When you drop a file with a JSON object in the 'data' folder with the name 'sample', you can access all the keys from that JSON object using '<b>data.sample.JSON_KEY_NAME</b>'.</p>
+         <p>Rush takes the JSON object and converts all the values into Ruby objects and makes them available to you via ERB. You can store arrays, strings, integers and other JSON objects in the JSON files.</p>
+         <p>This may be used to keep the your HTML super-DRY!</p>
+
+         <h4>Thats all folks!</h4>
+
          </div>
       </div>
    </div>
@@ -728,7 +802,7 @@ if true
 						<div class="col-md-3 col-sm-3 col-xs-12">
 							<div class="footer-logo-wrapper">
 								<!-- Logo Image -->
-								<a href="index" class="logo-image ">
+								<a href="../index.html" class="logo-image ">
 									<img src="../images/logos/logo.png" alt="logo">
 								</a>
 								<!-- End of Logo Image -->
