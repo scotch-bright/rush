@@ -114,9 +114,9 @@ module Rush
         array_of_file_names.each do |file_name|
           final_file_name = Rush::FileFetcher.get_file_name_from_path(file_name) + file_extension
           final_file_path = File.join final_asset_folder_path, final_file_name
-          create_or_overwrite_file(final_file_path, asset_server.get_file(file_name))
+          create_or_overwrite_file(final_file_path, asset_server.get_file(file_name, true))
         end
-        create_or_overwrite_file(File.join(final_asset_folder_path, "application" + file_extension), asset_server.get_file("application" + file_extension))
+        create_or_overwrite_file(File.join(final_asset_folder_path, "application" + file_extension), asset_server.get_file("application" + file_extension, true))
       end
     end
 

@@ -15,7 +15,7 @@ module Rush
     def start
       puts "Starting up the Rush sever. ('Ctrl+C' to exit) If this folder is a proper Rush application everything should go well :-)"
       app = Rush::Application.new Dir.pwd
-      Rack::Handler::WEBrick.run app
+      Rack::Handler::WEBrick.run app, :Port => 1500
     end
 
     desc "make", "Makes the static site."

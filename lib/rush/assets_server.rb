@@ -27,8 +27,10 @@ module Rush
     end
 
 
-    def get_file(file_name)
-      return "" if file_name.include? ".exclude"
+    def get_file(file_name, production=nil)
+      if file_name.include?(".exclude") && production
+        return ""
+      end
 
       output = ""
 
@@ -39,7 +41,7 @@ module Rush
           array_of_files = Rush::FileFetcher.array_of_file_paths(folder_path)
           array_of_files.each_with_index do |file_path, i|
             file_name = Rush::FileFetcher.get_file_name_and_extension_from_path(file_path)
-            output = output + get_file(file_name)
+            output = output + get_file(file_name, production)
             output = output + "\n" if i < array_of_files.size - 1
           end
         else
@@ -89,11 +91,11 @@ module Rush
     end
 
     def is_file_coffee_script? file_name
-      file_name.split(".")[1] == "coffee" ? true : false
+      file_name.split(".").last == "coffee" ? true : false
     end
 
     def is_file_scss? file_name
-      file_name.split(".")[1] == "scss" ? true : false
+      file_name.split(".").last == "scss" ? true : false
     end
 
   end
