@@ -60,7 +60,7 @@ module Rush
     end
 
     def parse_yamls_and_add_to_config
-      yaml_file_path = File.join @app_path, "rush_config.rb"
+      yaml_file_path = File.join @app_path, "rush_config.yml"
       if Rush::FileFetcher.file_exists? yaml_file_path
         begin
           config = YAML.load_file(yaml_file_path)

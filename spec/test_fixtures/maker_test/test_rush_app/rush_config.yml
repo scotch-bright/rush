@@ -1,2 +1,2 @@
-minify_js: true
+minify_js: false
 minify_css: false
