@@ -50,7 +50,7 @@ module Rush
       end
 
       # Minify the file if the minify flag is set to true.
-      if minify
+      if production && minify
         output = minify_this(output)
       end
 

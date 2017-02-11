@@ -58,7 +58,7 @@ describe Rush::CSSServer do
 
       it "minifies the css files before returning the final output" do
         the_css_that_should_be_returned = Rush::FileFetcher.get_file_contents(File.join(css_test_folder, "test_minified.css"))
-        expect (css_server_with_minification.get_css_file("test.css")).should eq the_css_that_should_be_returned
+        expect (css_server_with_minification.get_css_file("test.css", true)).should eq the_css_that_should_be_returned
       end
 
     end

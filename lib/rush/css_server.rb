@@ -9,8 +9,8 @@ module Rush
       @minify = config.minify_css == true ? true : false
     end
 
-    def get_css_file css_file_name
-      get_file css_file_name
+    def get_css_file css_file_name, production=nil
+      get_file css_file_name, production
     end
 
     private

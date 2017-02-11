@@ -59,7 +59,7 @@ describe Rush::JSServer do
 
       it "minifies the js files before returning the final output" do
         the_js_that_should_be_returned = Rush::FileFetcher.get_file_contents(File.join(js_test_folder, "test_minified.js"))
-        expect (js_server_with_minification.get_js_file("test.js")).should eq the_js_that_should_be_returned
+        expect (js_server_with_minification.get_js_file("test.js", true)).should eq the_js_that_should_be_returned
       end
 
     end

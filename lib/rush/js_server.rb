@@ -11,8 +11,8 @@ module Rush
       @minify = config.minify_js == true ? true : false
     end
 
-    def get_js_file file_name
-      get_file file_name
+    def get_js_file file_name, production=nil
+      get_file file_name, production
     end
 
     private
