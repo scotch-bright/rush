@@ -112,20 +112,25 @@ module Rush
 
     def get_special_layout
       special_layout_file_name = @first_line_of_file[/layout:[^\s]+/].split(":")[1]
-      @layout_path = File.join @layouts_folder, "#{special_layout_file_name}.html"
-      if Rush::FileFetcher.file_exists?(@layout_path)
-        Rush::FileFetcher.get_file_contents(@layout_path)
-      else
-        raise Rush::RushError.new(Rush::ERROR_TITLE_LAYOUT_NOT_FOUND + " #{@layout_path}", Rush::ERROR_DESC_LAYOUT_NOT_FOUND)
-      end
+      get_layout(special_layout_file_name, {
+        error_title: Rush::ERROR_TITLE_LAYOUT_NOT_FOUND + " #{@layout_path}",
+        error_desc: Rush::ERROR_DESC_LAYOUT_NOT_FOUND
+      })
     end
 
     def get_standard_layout
-      @layout_path = File.join @layouts_folder, "application.html"
+      get_layout("application", {
+        error_title: Rush::ERROR_TITLE_STANDARD_LAYOUT_NOT_FOUND + " #{@layout_path}",
+        error_desc: Rush::ERROR_DESC_STANDARD_LAYOUT_NOT_FOUND
+      })
+    end
+
+    def get_layout file_name, error_hash
+      @layout_path = File.join @layouts_folder, "#{file_name}.html"
       if Rush::FileFetcher.file_exists?(@layout_path)
         Rush::FileFetcher.get_file_contents(@layout_path)
       else
-        raise Rush::RushError.new(Rush::ERROR_TITLE_STANDARD_LAYOUT_NOT_FOUND + " #{@layout_path}", Rush::ERROR_DESC_STANDARD_LAYOUT_NOT_FOUND)
+        raise Rush::RushError.new(error_hash[:error_title], error_hash[:error_desc])
       end
     end
 
