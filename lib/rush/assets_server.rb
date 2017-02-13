@@ -63,13 +63,13 @@ module Rush
 
       if is_file_coffee_script? file_name
         begin
-          output = CoffeeScript.compile get_file_contents(file_name)
+          CoffeeScript.compile get_file_contents(file_name)
         rescue
           raise Rush::RushError.new Rush::ERROR_TITLE_MALFORMED_COFFEE_SCRIPT + file_name, Rush::ERROR_DESC_MALFORMED_COFFEE_SCRIPT
         end
       elsif is_file_scss? file_name
         begin
-          output = Sass::Engine.new(get_file_contents(file_name), :syntax => :scss).render
+          Sass::Engine.new(get_file_contents(file_name), :syntax => :scss).render
         rescue
           raise Rush::RushError.new Rush::ERROR_TITLE_MALFORMED_SCSS_SCRIPT + file_name, Rush::ERROR_DESC_MALFORMED_SCSS_SCRIPT
         end

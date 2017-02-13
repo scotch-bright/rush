@@ -60,11 +60,11 @@ module Rush
         content = content.gsub(/('|")(static_files|js|css|images|fonts)\//, '\1../\2/')
         # Making all the links to the other pages work
         (@html_file_names_array - ["index"]).each do |page_name|
-          content = content.gsub /href\W*=\W*('|")#{page_name}/i, "href=\\1../#{page_name}"
+          content = content.gsub(/href\W*=\W*('|")#{page_name}/i, "href=\\1../#{page_name}")
         end
 
         # Chnage the refrences to index to point to the homepage
-        content = content.gsub /href\W*=\W*('|")index/i, "href=\\1../index.html"
+        content = content.gsub(/href\W*=\W*('|")index/i, "href=\\1../index.html")
 
         return content
       else

@@ -53,12 +53,6 @@ module Rush
       parse_yamls_and_add_to_config
     end
 
-    private
-
-    def log(title, msg)
-      puts "\n\n\n" + "=" * 10 + title + "=" * 10 + "\n" + msg + "=" * 20 + "\n\n\n"
-    end
-
     def parse_yamls_and_add_to_config
       yaml_file_path = File.join @app_path, "rush_config.yml"
       if Rush::FileFetcher.file_exists? yaml_file_path
@@ -69,7 +63,7 @@ module Rush
           end
         rescue
           # Produce error HTML and keep. We will use this in our Rack app when needed
-          es = Rush::ErrorServer.new ( Rush::RushError.new Rush::ERROR_TITLE_YAML_CONFIG_PARSE_ERROR, Rush::ERROR_DESC_YAML_CONFIG_PARSE_ERROR )
+          es = Rush::ErrorServer.new(Rush::RushError.new(Rush::ERROR_TITLE_YAML_CONFIG_PARSE_ERROR, Rush::ERROR_DESC_YAML_CONFIG_PARSE_ERROR))
           @error_html = es.get_error_html
           @bad_config = true
         end

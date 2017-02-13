@@ -87,7 +87,7 @@ module Rush
       css = css.gsub(/(:|\s)0+\.(\d+)/, '\1.\2')
 
       # Convert rgb color values to hex values.
-      css = css.gsub(/rgb\s*\(\s*([0-9,\s]+)\s*\)/) do |match|
+      css = css.gsub(/rgb\s*\(\s*([0-9,\s]+)\s*\)/) do
         '#' << $1.scan(/\d+/).map{|n| n.to_i.to_s(16).rjust(2, '0') }.join
       end
 
