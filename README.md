@@ -1,38 +1,15 @@
 # Rush
 
-## Installation
+## What is the project all about?
 
-Add this line to your application's Gemfile:
+Rush is a framework that helps you make static sites in a fast, clean, DRY and effortless way.
 
-```ruby
-gem 'rush'
-```
+It is based on the Rails philosophy of convention over configuration. It is designed to be super easy to use for front-end developer to learn and start using immediately with a small learning curve. This was built by me as an internal tool to make the front end developers in the team more productive.
 
-And then execute:
+### The Rush Website
 
-    $ bundle
+https://scotch-bright.github.io/rush/index.html
 
-Or install it yourself as:
+## How to use the Framework?
 
-    $ gem install rush
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rush. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
----
+Detailed tutorial here: https://scotch-bright.github.io/rush/tutorial/
